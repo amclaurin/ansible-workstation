@@ -1,0 +1,6 @@
+---
+
+    - name: Install sshuttle via PIP for easy ssh tunnelling
+      pip:
+        name: sshuttle
+        extra_args: --user

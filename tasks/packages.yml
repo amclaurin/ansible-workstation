@@ -1,0 +1,92 @@
+---
+
+    - name: Install Fast Mirror
+      become: yes
+      package:
+        name: yum-fastestmirror
+        state: present
+    - name: Install Python bindings for SELinux - needed for some later stages to work
+      become: yes
+      package:
+        name: libselinux-python
+        state: present
+    - name: Install Latte Dock
+      become: yes
+      package:
+        name: latte-dock
+        state: present
+    - name: Install Chromium
+      become: yes
+      package:
+        name: chromium
+        state: present
+    - name: Install Falkon
+      become: yes
+      package:
+        name: falkon
+        state: present
+    - name: Install Microsoft VS Code
+      become: yes
+      package:
+        name: code
+        state: present
+    - name: Install compat-openssl-10 - needed for PowerShell
+      become: yes
+      package:
+        name: compat-openssl10
+        state: present
+    - name: Install Powershell
+      become: yes
+      package:
+        name: powershell
+        state: present
+    - name: Install Kate
+      become: yes
+      package:
+        name: kate
+        state: present
+    - name: Install Thunderbird
+      become: yes
+      package:
+        name: thunderbird
+        state: present
+    - name: Install Tilix
+      become: yes
+      package:
+        name: tilix
+        state: present
+    - name: Install Curl
+      become: yes
+      package:
+        name: curl
+        state: present
+    - name: Install cabextract
+      become: yes
+      package:
+        name: cabextract
+        state: present
+    - name: Install xorg-x11-font-utils
+      become: yes
+      package:
+        name: xorg-x11-font-utils
+        state: present
+    - name: Install fontconfig
+      become: yes
+      package:
+        name: fontconfig
+        state: present
+    - name: Install fuse
+      become: yes
+      package:
+        name: fuse
+        state: present
+    - name: Install fuse-devel
+      become: yes
+      package:
+        name: fuse-devel
+        state: present
+    - name: Install fedora28 backgrounds
+      become: yes
+      package:
+        name: f28-backgrounds-kde
+        state: present
