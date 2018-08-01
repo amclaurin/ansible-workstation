@@ -1,0 +1,29 @@
+---
+
+  - name: Add multiple repositories into the same file (1/3)
+    become: yes
+    zypper_repository:
+      name: code
+      description: Visual Studio Code
+      repo: https://packages.microsoft.com/yumrepos/vscode
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes
+  - name: Add multiple repositories into the same file (2/3)
+    become: yes
+    zypper_repository:
+      name: packages-microsoft-com-prod
+      description: packages-microsoft-com-prod
+      repo: https://packages.microsoft.com/rhel/7/prod/
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes
+  - name: Add multiple repositories into the same file (3/3)
+    become: yes
+    zypper_repository:
+      name: azure-cli
+      description: azure-cli
+      repo: https://packages.microsoft.com/yumrepos/azure-cli
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes

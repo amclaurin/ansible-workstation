@@ -1,0 +1,31 @@
+---
+
+  - name: Add multiple repositories into the same file (1/3)
+    yum_repository:
+      name: code
+      description: Visual Studio Code
+      file: external_repos
+      baseurl: https://packages.microsoft.com/yumrepos/vscode
+      gpgcheck: yes
+      gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      enabled: yes
+  - name: Add multiple repositories into the same file (2/3)
+    yum_repository:
+      name: packages-microsoft-com-prod
+      description: packages-microsoft-com-prod
+      file: external_repos
+      baseurl: https://packages.microsoft.com/rhel/7/prod/
+      enabled: 1
+      gpgcheck: 1
+      gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      enabled: yes
+  - name: Add multiple repositories into the same file (3/3)
+    yum_repository:
+      name: azure-cli
+      description: azure-cli
+      file: external_repos
+      baseurl: https://packages.microsoft.com/yumrepos/azure-cli
+      enabled: 1
+      gpgcheck: 1
+      gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      enabled: yes

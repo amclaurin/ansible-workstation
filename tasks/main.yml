@@ -1,0 +1,7 @@
+   - name: update profile
+     lineinfile:
+       dest: /home/alistair/.bashrc
+       regexp: 'PATH=$PATH:$HOME/.local/bin'
+       state: present
+       insertafter: EOF
+       line: 'PATH=$PATH:$HOME/.local/bin'
