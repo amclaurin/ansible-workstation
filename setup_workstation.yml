@@ -22,7 +22,7 @@
     #- include_tasks: tasks/terraform.yml
     #- include_tasks: tasks/networktools.yml
     #- include_tasks: tasks/decorations.yml
-    - include_tasks: handlers/main.yml
+    - include_tasks: tasks/main.yml
 
   handlers:
     #- include_tasks: handlers/main.yml
