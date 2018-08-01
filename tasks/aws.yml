@@ -4,3 +4,7 @@
       pip:
         name: awscli
         extra_args: --upgrade --user
+    - name: Install AWS Boto via PIP
+      pip:
+        name: boto
+        extra_args: --upgrade --user

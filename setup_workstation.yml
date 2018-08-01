@@ -3,6 +3,9 @@
   hosts: localhost
   #become: true
   gather_facts: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+    user_home_directory: /home/alistair
 
   #vars_files:
     #- vars/vars.yml
@@ -10,14 +13,16 @@
 
   tasks:
     - include_tasks: tasks/setup.yml
-    - include_tasks: tasks/repos.yml
-    - include_tasks: tasks/packages.yml
-    - include_tasks: tasks/azure.yml
-    - include_tasks: tasks/aws.yml
-    - include_tasks: tasks/terraform.yml
-    - include_tasks: tasks/networktools.yml
-    - include_tasks: tasks/decorations.yml
-
+    #- include_tasks: tasks/fedorarepos.yml
+    #- include_tasks: tasks/suserepos.yml
+    #- include_tasks: tasks/packages.yml
+    #- include_tasks: tasks/fonts.yml
+    #- include_tasks: tasks/azure.yml
+    #- include_tasks: tasks/aws.yml
+    #- include_tasks: tasks/terraform.yml
+    #- include_tasks: tasks/networktools.yml
+    #- include_tasks: tasks/decorations.yml
+    - include_tasks: handlers/main.yml
 
   handlers:
-#- include_tasks: handlers/main.yml
+    #- include_tasks: handlers/main.yml

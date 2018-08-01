@@ -1,5 +1,11 @@
 ---
 
+    - name: Install fedora28 backgrounds
+      become: yes
+      package:
+        name: f28-backgrounds-kde
+        state: present
+      when: ansible_os_family == "Fedora"
     - name: Install some cool wallpapers (optional)
       get_url:
         url: http://drive.noobslab.com/data/Mac/MacBuntu-Wallpapers.zip
