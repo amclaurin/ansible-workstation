@@ -1,0 +1,8 @@
+---
+
+  - name: Install Mozilla Containers Extension
+    shell: "./tasks/mozilla-extensions-manager.sh --update --firefox --user https://addons.mozilla.org/firefox/downloads/file/872067/firefox_multi_account_containers-6.0.0-an+fx-linux.xpi"
+  - name: Install Mozilla Ghostery Ad Blocker Extension
+    shell: "./tasks/mozilla-extensions-manager.sh --update --firefox --user https://addons.mozilla.org/firefox/downloads/file/1018091/ghostery_privacy_ad_blocker-8.2.1-an+fx.xpi"
+  - name: Install Smooth Scrolling Extension
+    shell: "./tasks/mozilla-extensions-manager.sh --update --firefox --user https://addons.mozilla.org/firefox/downloads/file/859640/yet_another_smooth_scrolling_we-2.0.1-an+fx.xpi"
