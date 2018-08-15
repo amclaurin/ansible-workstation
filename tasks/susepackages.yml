@@ -1,0 +1,101 @@
+---
+
+  - name: Install Fast Mirror
+    become: yes
+    ignore_errors: yes
+    package:
+      name: yum-fastestmirror
+      state: present
+  - name: Install Python bindings for SELinux - needed for some later stages to work
+    become: yes
+    ignore_errors: yes
+    package:
+      name: libselinux-python
+      state: present
+  - name: Install Curl
+    become: yes
+    ignore_errors: yes
+    package:
+      name: curl
+      state: present
+  - name: Install Git
+    become: yes
+    ignore_errors: yes
+    package:
+      name: git
+      state: present
+  - name: Install Latte Dock
+    become: yes
+    ignore_errors: yes
+    package:
+      name: latte-dock
+      state: present
+  - name: Install Chromium
+    become: yes
+    ignore_errors: yes
+    package:
+      name: chromium
+      state: present
+  - name: Install Falkon
+    become: yes
+    ignore_errors: yes
+    package:
+      name: falkon
+      state: present
+  - name: Install Microsoft VS Code
+    become: yes
+    ignore_errors: yes
+    package:
+      name: code
+      state: present
+  # - name: Install Powershell
+  #   become: yes
+  #   shell: "zypper install https://github.com/PowerShell/PowerShell/releases/download/v6.0.2/powershell-6.0.2-1.rhel.7.x86_64.rpm"
+  - name: Install Kate
+    become: yes
+    ignore_errors: yes
+    package:
+      name: kate
+      state: present
+  - name: Install Thunderbird
+    become: yes
+    ignore_errors: yes
+    package:
+      name: thunderbird
+      state: present
+  - name: Install Tilix
+    become: yes
+    ignore_errors: yes
+    package:
+      name: tilix
+      state: present
+  - name: Install cabextract
+    become: yes
+    ignore_errors: yes
+    package:
+      name: cabextract
+      state: present
+  - name: Install xorg-x11-font-utils
+    become: yes
+    ignore_errors: yes
+    package:
+      name: xorg-x11-font-utils
+      state: present
+  - name: Install fontconfig
+    become: yes
+    ignore_errors: yes
+    package:
+      name: fontconfig
+      state: present
+  - name: Install fuse
+    become: yes
+    ignore_errors: yes
+    package:
+      name: fuse
+      state: present
+  - name: Install fuse-devel
+    become: yes
+    ignore_errors: yes
+    package:
+      name: fuse-devel
+      state: present
