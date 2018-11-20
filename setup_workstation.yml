@@ -3,34 +3,34 @@
   hosts: localhost
   gather_facts: true
   vars:
+    ansible_connection: local
     ansible_python_interpreter: /usr/bin/python
     user_home_directory: /home/alistair
-
   #vars_files:
     #- vars/vars.yml
     #- vars/vault_vars.yml
 
   tasks:
-    - include_tasks: tasks/setup.yml
-    - include_tasks: tasks/fedorarepos.yml
-      when: ansible_os_family == "RedHat"
-    - include_tasks: tasks/suserepos.yml
-      when: ansible_os_family == "Suse"
-    - include_tasks: tasks/redhatpackages.yml
-      when: ansible_os_family == "RedHat"
-    - include_tasks: tasks/susepackages.yml
-      when: ansible_os_family == "Suse"
-    - include_tasks: tasks/mxlinuxpackages.yml
-      when: ansible_os_family == "Debian"
-    # - include_tasks: tasks/fonts.yml
-    #   when: (ansible_os_family == "RedHat") or (ansible_os_family == "Suse")
-    # - include_tasks: tasks/azure.yml
-    # - include_tasks: tasks/aws.yml
-    # - include_tasks: tasks/terraform.yml
-    # - include_tasks: tasks/networktools.yml
-    # - include_tasks: tasks/decorations.yml
-    # - include_tasks: tasks/firefoxextensions.yml
-    #- include_tasks: tasks/main.yml
+    #- include_tasks: tasks/setup.yml
+    #- include_tasks: tasks/fedorarepos.yml
+      #when: ansible_os_family == "RedHat"
+    #- include_tasks: tasks/suserepos.yml
+      #when: ansible_os_family == "Suse"
+    #- include_tasks: tasks/redhatpackages.yml
+      #when: ansible_os_family == "RedHat"
+    #- include_tasks: tasks/susepackages.yml
+      #when: ansible_os_family == "Suse"
+    #- include_tasks: tasks/mxlinuxpackages.yml
+      #when: ansible_os_family == "Debian"
+    #- include_tasks: tasks/fonts.yml
+      #when: (ansible_os_family == "RedHat") or (ansible_os_family == "Suse")
+    #- include_tasks: tasks/azure.yml
+    #- include_tasks: tasks/aws.yml
+    - include_tasks: tasks/terraform.yml
+    - include_tasks: tasks/networktools.yml
+    - include_tasks: tasks/decorations.yml
+    - include_tasks: tasks/firefoxextensions.yml
+    - include_tasks: tasks/main.yml
 
   handlers:
     #- include_tasks: handlers/main.yml

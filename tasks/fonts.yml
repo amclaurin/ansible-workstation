@@ -15,12 +15,12 @@
     - name: Download Google fonts
       get_url:
         url: https://github.com/google/fonts/archive/master.tar.gz
-        dest: ~/Downloads/master.tar.gz
+        dest: "{{ user_home_directory }}/Downloads/master.tar.gz"
         mode: 0440
     - name: Extract the downloaded fonts
       unarchive:
-        src: ~/Downloads/master.tar.gz
-        dest: ~/Downloads/
+        src: "{{ user_home_directory }}/Downloads/master.tar.gz"
+        dest: "{{ user_home_directory }}/Downloads/"
     - name: Make the target directory
       become: yes
       shell: mkdir -p /usr/share/fonts/truetype/google-fonts
@@ -30,7 +30,7 @@
     - name: Download Noobslab MacBuntu fonts
       get_url:
         url: http://drive.noobslab.com/data/Mac/macfonts.zip
-        dest: ~/Downloads/macfonts.zip
+        dest: "{{ user_home_directory }}/Downloads/macfonts.zip"
         mode: 0440
     - name: Make the target directory
       become: yes
@@ -38,7 +38,7 @@
     - name: Extract the downloaded fonts
       become: yes
       unarchive:
-        src: ~/Downloads/macfonts.zip
+        src: "{{ user_home_directory }}/Downloads/macfonts.zip"
         dest: /usr/share/fonts/apple-fonts
     #- name: Install extra fonts
     #dnf: name={{ item }} state=installed

@@ -1,6 +1,6 @@
    - name: update profile
      lineinfile:
-       dest: /home/alistair/.bashrc
+       dest: "{{ user_home_directory }}/.bashrc"
        regexp: 'PATH=$PATH:$HOME/.local/bin'
        state: present
        insertafter: EOF

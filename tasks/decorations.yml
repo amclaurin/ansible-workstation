@@ -1,31 +1,31 @@
 ---
 
-    - name: Install fedora28 backgrounds
-      become: yes
-      package:
-        name: f28-backgrounds-kde
-        state: present
-      when: ansible_os_family == "Fedora"
+    #- name: Install fedora28 backgrounds
+      #become: yes
+      #package:
+        #name: f28-backgrounds-kde
+        #state: present
+      #when: ansible_os_family == "Fedora"
     - name: Install some cool wallpapers (optional)
       get_url:
         url: http://drive.noobslab.com/data/Mac/MacBuntu-Wallpapers.zip
-        dest: ~/Downloads/MacBuntu-Wallpapers.zip
+        dest: "{{ user_home_directory }}/Downloads/MacBuntu-Wallpapers.zip"
         mode: 0440
     - name: Extract the Images to the Pictures folder
       unarchive:
-        src: ~/Downloads/MacBuntu-Wallpapers.zip
-        dest: ~/Pictures/
+        src: "{{ user_home_directory }}/Downloads/MacBuntu-Wallpapers.zip"
+        dest: "{{ user_home_directory }}/Pictures/"
     - name: Install icon set from git
       git:
         repo: https://github.com/pop-os/icon-theme.git
-        dest: ~/Downloads/pop-os-icons
+        dest: "{{ user_home_directory }}/Downloads/pop-os-icons"
     - name: run make to install the icons
       make:
-        chdir: /home/alistair/Downloads/pop-os-icons
+        chdir: "{{ user_home_directory }}/Downloads/pop-os-icons"
         target: install
       become: yes
     - name: run make post-install
       make:
-        chdir: /home/alistair/Downloads/pop-os-icons
+        chdir: "{{ user_home_directory }}/Downloads/pop-os-icons"
         target: post-install
       become: yes
