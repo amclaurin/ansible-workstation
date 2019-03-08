@@ -1,0 +1,18 @@
+---
+
+  #- name: Install Opera
+    #snap:
+      #name: opera
+      #state: present
+  #- name: Install MailSpring
+    #snap:
+      #name: mailspring
+      #state: present
+      
+#Requires Ansible 2.8
+
+#Alternatively run
+
+#sudo snap install mailspring
+#sudo snap install opera
+

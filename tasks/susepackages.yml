@@ -30,18 +30,18 @@
     package:
       name: latte-dock
       state: present
-  - name: Install Chromium
-    become: yes
-    ignore_errors: yes
-    package:
-      name: chromium
-      state: present
-  - name: Install Falkon
-    become: yes
-    ignore_errors: yes
-    package:
-      name: falkon
-      state: present
+  #- name: Install Chromium
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: chromium
+      #state: present
+  #- name: Install Falkon
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: falkon
+      #state: present
   - name: Install Microsoft VS Code
     become: yes
     ignore_errors: yes
@@ -57,12 +57,12 @@
     package:
       name: kate
       state: present
-  - name: Install Thunderbird
-    become: yes
-    ignore_errors: yes
-    package:
-      name: thunderbird
-      state: present
+  #- name: Install Thunderbird
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: thunderbird
+      #state: present
   - name: Install Tilix
     become: yes
     ignore_errors: yes
@@ -79,7 +79,7 @@
     become: yes
     ignore_errors: yes
     package:
-      name: xorg-x11-font-utils
+      name: font-util
       state: present
   - name: Install fontconfig
     become: yes
@@ -98,4 +98,16 @@
     ignore_errors: yes
     package:
       name: fuse-devel
+      state: present
+  - name: Install snapd
+    become: yes
+    ignore_errors: yes
+    package:
+      name: snapd
+      state: present
+  - name: Install Gnome Keyring - needed for Mailspring
+    become: yes
+    ignore_errors: yes
+    package:
+      name: gnome-keyring
       state: present

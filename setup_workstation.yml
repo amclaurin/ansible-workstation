@@ -1,4 +1,5 @@
 ---
+# Run with ansible-playbook -v ./setup_workstation.yml --ask-become-pass
 - name: Setup Workstation
   hosts: localhost
   gather_facts: true
@@ -22,15 +23,16 @@
       #when: ansible_os_family == "Suse"
     #- include_tasks: tasks/mxlinuxpackages.yml
       #when: ansible_os_family == "Debian"
+    - include_tasks: tasks/snaps.yml
     #- include_tasks: tasks/fonts.yml
       #when: (ansible_os_family == "RedHat") or (ansible_os_family == "Suse")
     #- include_tasks: tasks/azure.yml
     #- include_tasks: tasks/aws.yml
-    - include_tasks: tasks/terraform.yml
-    - include_tasks: tasks/networktools.yml
-    - include_tasks: tasks/decorations.yml
-    - include_tasks: tasks/firefoxextensions.yml
-    - include_tasks: tasks/main.yml
+    #- include_tasks: tasks/terraform.yml
+    #- include_tasks: tasks/networktools.yml
+    #- include_tasks: tasks/decorations.yml
+    #- include_tasks: tasks/firefoxextensions.yml
+    #- include_tasks: tasks/main.yml
 
   handlers:
     #- include_tasks: handlers/main.yml
