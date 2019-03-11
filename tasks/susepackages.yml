@@ -99,15 +99,15 @@
     package:
       name: fuse-devel
       state: present
-  - name: Install snapd
-    become: yes
-    ignore_errors: yes
-    package:
-      name: snapd
-      state: present
-  - name: Install Gnome Keyring - needed for Mailspring
-    become: yes
-    ignore_errors: yes
-    package:
-      name: gnome-keyring
-      state: present
+  #- name: Install snapd
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: snapd
+      #state: present
+  #- name: Install Gnome Keyring - needed for Mailspring
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: gnome-keyring
+      #state: present

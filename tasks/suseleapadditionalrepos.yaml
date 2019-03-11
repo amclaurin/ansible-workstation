@@ -1,0 +1,22 @@
+# Add Latest Repos to Leap 15
+
+zypper ar -p 75 http://download.opensuse.org/repositories/KDE:/Qt5/openSUSE_Leap_15.0 KQ
+zypper ar -p 75 http://download.opensuse.org/repositories/KDE:/Frameworks5/openSUSE_Leap_15.0 KF
+zypper ar -p 75 https://download.opensuse.org/repositories/KDE:/Applications/KDE_Frameworks5_openSUSE_Leap_15.0 KA
+zypper -v dup --allow-vendor-change
+
+# Add Non OSS Repo Leap 15
+
+
+
+Version: Leap 15.0 http://download.opensuse.org/distribution/leap/15.0/repo/non-oss/
+
+
+
+Version: Leap 15.0 http://download.opensuse.org/update/leap/15.0/non-oss/
+
+
+2019-03-11 14:41:54 zypper ar -f http://download.opensuse.org/distribution/leap/15.0/repo/non-oss/ NonOSS
+   16  2019-03-11 14:43:01 zypper ar -f http://download.opensuse.org/update/leap/15.0/non-oss/ NonOSSUpdate
+   17  2019-03-11 14:43:11 zypper install Opera
+   18  2019-03-11 14:43:23 zypper install opera

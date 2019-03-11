@@ -1,0 +1,134 @@
+---
+
+  - name: Install Bash
+    become: yes
+    ignore_errors: yes
+    package:
+      name: bash
+      state: present
+  - name: Install Binutils
+    become: yes
+    ignore_errors: yes
+    package:
+      name: binutils
+      state: present
+  - name: Install Bison
+    become: yes
+    ignore_errors: yes
+    package:
+      name: bison
+      state: present
+  - name: Install BZip
+    become: yes
+    ignore_errors: yes
+    package:
+      name: bzip
+      state: present
+  - name: Install Coreutils
+    become: yes
+    ignore_errors: yes
+    package:
+      name: coreutils
+      state: present
+  - name: Install Diffutils
+    become: yes
+    ignore_errors: yes
+    package:
+      name: diffutils
+      state: present
+  - name: Install Findutils
+    become: yes
+    ignore_errors: yes
+    package:
+      name: findutils
+      state: present
+  - name: Install Gawk
+    become: yes
+    ignore_errors: yes
+    package:
+      name: gawk
+      state: present
+  - name: Install gcc
+    become: yes
+    ignore_errors: yes
+    package:
+      name: gcc
+      state: present
+  - name: Install gcc-c++
+    become: yes
+    ignore_errors: yes
+    package:
+      name: gcc-c++
+      state: present
+  - name: Install glibc
+    become: yes
+    ignore_errors: yes
+    package:
+      name: glibc
+      state: present
+  - name: Install grep
+    become: yes
+    ignore_errors: yes
+    package:
+      name: grep
+      state: present
+  - name: Install gzip
+    become: yes
+    ignore_errors: yes
+    package:
+      name: gzip
+      state: present
+  - name: Install M4
+    become: yes
+    ignore_errors: yes
+    package:
+      name: m4
+      state: present
+  - name: Install make
+    become: yes
+    ignore_errors: yes
+    package:
+      name: make
+      state: present
+  - name: Install Patch
+    become: yes
+    ignore_errors: yes
+    package:
+      name: patch
+      state: present
+  - name: Install PERL
+    become: yes
+    ignore_errors: yes
+    package:
+      name: perl
+      state: present
+  - name: Install Python
+    become: yes
+    ignore_errors: yes
+    package:
+      name: python
+      state: present
+  - name: Install sed
+    become: yes
+    ignore_errors: yes
+    package:
+      name: sed
+      state: present
+  - name: Install tar
+    become: yes
+    ignore_errors: yes
+    package:
+      name: tar
+      state: present
+  - name: Install texinfo
+    become: yes
+    ignore_errors: yes
+    package:
+      name: texinfo
+      state: present
+  - name: Install Xz
+    become: yes
+    ignore_errors: yes
+    package:
+      name: xz
+      state: present
