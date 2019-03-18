@@ -23,6 +23,10 @@
       #when: ansible_os_family == "RedHat"
     #- include_tasks: tasks/suserepos.yml
       #when: ansible_os_family == "Suse"
+    #- include_tasks: tasks/suseleap15nonossrepos.yml
+      #when: 
+        #- ansible_facts['distribution_file_variety'] == "SUSE"
+        #- ansible_facts['distribution'] != "openSUSE Tumbleweed"
     #- include_tasks: tasks/susekderepos.yml
       #when: 
         #- ansible_facts['distribution_file_variety'] == "SUSE"
