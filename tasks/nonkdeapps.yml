@@ -1,0 +1,8 @@
+---
+
+  - name: Install Tilix
+    become: yes
+    ignore_errors: yes
+    package:
+      name: tilix
+      state: present

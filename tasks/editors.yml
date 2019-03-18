@@ -1,0 +1,6 @@
+  - name: Install Microsoft VS Code
+    become: yes
+    ignore_errors: yes
+    package:
+      name: code
+      state: present

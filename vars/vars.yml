@@ -1,0 +1,75 @@
+#
+# Settings for Ansible Build
+#
+
+# Use "present" to install, "absent" to remove and "none" should leave unchanged
+
+#
+# Installer Packages  - Used to speed up later stages or bindings not automatically installed
+#
+
+# Install Fast Mirror, useful for speeding up downloads
+
+fastmirror: present
+
+# Install Python Bindings foor SELinux - needed for Fedora, less so for other distributions
+
+libselinux_python: present
+
+# Font utilities - Used to manage additional fonts as they are installed - not needed if you are happy with Distro's default fonts
+
+fontutils: present
+
+#
+# Update KDE
+#
+# If set to yes - will update Repos to allow download of latest KDE Binaries
+#
+# Does not apply to KDE Neon or OpenSUSE Tumbleweed
+#
+
+updatekde: yes
+
+# 
+# Standard Linux Packages - used for general management
+#
+
+# Install Curl - useful for ad hoc downloads
+
+curl: present
+
+# Git - used for source code management
+
+git: present
+
+# HTOP - Colourful and Informative System Process Information
+
+htop: present
+
+#
+# Web Browsers - useful for everything
+#
+
+# Firefox - Recommended to keep
+
+firefox: present
+
+# Chromium - Open source version of Google Chrome
+
+chromium: present
+
+# Falkon - Webkit Based KDE Browser
+
+falkon: present
+
+# Opera - Non Open Source Chrome Based Browser
+
+opera: present
+
+# Vivaldi - Chrome Based Web Browser
+
+vivaldi: present
+
+# Brave - Open Source Chrome Based Web Browser
+
+brave: present

@@ -1,0 +1,9 @@
+  - name: Add multiple repositories into the same file (1/1)
+    become: yes
+    zypper_repository:
+      name: Vivaldi
+      description: Vivaldi
+      repo: https://repo.vivaldi.com/archive/vivaldi-suse.repo
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes

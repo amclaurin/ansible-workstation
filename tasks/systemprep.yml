@@ -1,0 +1,27 @@
+---
+
+  - name: Install Fast Mirror
+    become: yes
+    ignore_errors: yes
+    package:
+      name: yum-fastestmirror
+      state: "{{ fastmirror }}"
+  - name: Install Python bindings for SELinux - needed for some later stages to work
+    become: yes
+    ignore_errors: yes
+    package:
+      name: libselinux-python
+      state: present
+      when: ansible_os_family == "RedHat"
+  - name: Install xorg-x11-font-utils
+    become: yes
+    ignore_errors: yes
+    package:
+      name: font-util
+      state: "{{ fontutils }}"
+  - name: Install fontconfig
+    become: yes
+    ignore_errors: yes
+    package:
+      name: fontconfig
+      state: "{{ fontutils }}"

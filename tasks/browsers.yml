@@ -1,0 +1,24 @@
+  - name: Install Firefox
+    become: yes
+    ignore_errors: yes
+    package:
+      name: firefox
+      state: present
+  - name: Install Falkon
+    become: yes
+    ignore_errors: yes
+    package:
+      name: falcon
+      state: "{{ falcon }}"
+  - name: Install Opera Browser
+    become: yes
+    ignore_errors: yes
+    package:
+      name: opera
+      state: "{{ opera }}"
+  - name: Install Vivaldi Browser
+    become: yes
+    ignore_errors: yes
+    package:
+      name: vivaldi-stable
+      state: "{{ vivaldi }}"

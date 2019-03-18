@@ -1,5 +1,6 @@
 ---
 # Run with ansible-playbook -v ./setup_workstation.yml --ask-become-pass
+
 - name: Setup Workstation
   hosts: localhost
   gather_facts: true
@@ -7,16 +8,26 @@
     ansible_connection: local
     ansible_python_interpreter: /usr/bin/python
     user_home_directory: /home/alistair
-  #vars_files:
-    #- vars/vars.yml
-    #- vars/vault_vars.yml
+    fastmirror: present
+
+    #include_vars:
+        #dir: vars/all
 
   tasks:
-    #- include_tasks: tasks/setup.yml
+    - debug: var=ansible_facts
+    - name: Set package variables
+      include_vars: vars/vars.yml
+    #- include_tasks: tasks/systemprep.yml
+    #- include_tasks: tasks/common.yml
     #- include_tasks: tasks/fedorarepos.yml
       #when: ansible_os_family == "RedHat"
-    - include_tasks: tasks/suserepos.yml
-      when: ansible_os_family == "Suse"
+    #- include_tasks: tasks/suserepos.yml
+      #when: ansible_os_family == "Suse"
+    #- include_tasks: tasks/susekderepos.yml
+      #when: 
+        #- ansible_facts['distribution_file_variety'] == "SUSE"
+        #- ansible_facts['distribution'] != "openSUSE Tumbleweed"
+        #- updatekde == yes
     #- include_tasks: tasks/redhatpackages.yml
       #when: ansible_os_family == "RedHat"
     #- include_tasks: tasks/susepackages.yml

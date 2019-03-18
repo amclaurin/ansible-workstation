@@ -1,0 +1,32 @@
+  - name: Add multiple repositories into the same file (5/7)
+    become: yes
+    zypper_repository:
+      name: KQ
+      description: QT5
+      repo: http://download.opensuse.org/repositories/KDE:/Qt5/openSUSE_Leap_15.0
+      disable_gpg_check: yes
+      state: present
+      priority: 75
+      runrefresh: yes
+  - name: Add multiple repositories into the same file (6/7)
+    become: yes
+    zypper_repository:
+      name: KF
+      description: KDEFrameworks
+      repo: http://download.opensuse.org/repositories/KDE:/Frameworks5/openSUSE_Leap_15.0
+      disable_gpg_check: yes
+      state: present
+      priority: 75
+      runrefresh: yes
+  - name: Add multiple repositories into the same file (7/7)
+    become: yes
+    zypper_repository:
+      name: KA
+      description: KDEApplications
+      repo: https://download.opensuse.org/repositories/KDE:/Applications/KDE_Frameworks5_openSUSE_Leap_15.0
+      disable_gpg_check: yes
+      state: present
+      priority: 75
+      runrefresh: yes
+      
+      #Now need to run zypper -v dup --allow-vendor-change

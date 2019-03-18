@@ -1,0 +1,14 @@
+---
+
+  - name: Install fuse
+    become: yes
+    ignore_errors: yes
+    package:
+      name: fuse
+      state: present
+  - name: Install fuse-devel
+    become: yes
+    ignore_errors: yes
+    package:
+      name: fuse-devel
+      state: present

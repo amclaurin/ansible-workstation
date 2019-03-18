@@ -1,0 +1,14 @@
+---
+
+  - name: Install Latte Dock
+    become: yes
+    ignore_errors: yes
+    package:
+      name: latte-dock
+      state: present
+  - name: Install Kate
+    become: yes
+    ignore_errors: yes
+    package:
+      name: kate
+      state: present
