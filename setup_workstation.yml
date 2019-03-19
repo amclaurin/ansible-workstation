@@ -9,17 +9,62 @@
     ansible_python_interpreter: /usr/bin/python
     user_home_directory: /home/alistair
     fastmirror: present
-
-    #include_vars:
-        #dir: vars/all
+    distributionpath: "tasks/{{ distribution_file_variety }}/{{ distribution }}-{{ distribution_version }}"
 
   tasks:
     - debug: var=ansible_facts
     - name: Set package variables
       include_vars: vars/vars.yml
+    #- name: Install Fast Mirror
+      #become: yes
+      #ignore_errors: yes
+      #package:
+        #name: yum-fastestmirror
+        #state: present
+    #- name: Install Python bindings for SELinux - needed for some later stages to work
+      #become: yes
+      #ignore_errors: yes
+      #package:
+        #name: libselinux-python
+        #state: present
+        #when: ansible_os_family == "RedHat"
     #- include_tasks: tasks/systemprep.yml
-    #- include_tasks: tasks/common.yml
-    #- include_tasks: tasks/fedorarepos.yml
+    #- include_tasks: tasks/commonpackages.yml
+    #- include_tasks: tasks/susekderepos.yml
+      #when: 
+        #- ansible_facts['distribution_file_variety'] == "SUSE"
+        #- ansible_facts['distribution'] != "openSUSE Tumbleweed"
+        #- update_kde == yes
+    #- include_tasks: "{{ distributionpath }}/nonossrepo.yml"
+      #when: 
+        #- suse_non_oss_repo == yes
+    #- include_tasks: "{{ distributionpath }}/vivaldirepo.yml"
+      #when: 
+        #- vivaldi == present
+    #- include_tasks: "{{ distributionpath }}/braverepo.yml"
+      #when: 
+        #- brave-browser == "present"
+        #- ansible_facts['distribution_file_variety'] != "SUSE"
+    #- include_tasks: tasks/browsers.yml
+
+    - include_tasks: tasks/fonts.yml
+      #when: (ansible_os_family == "RedHat") or (ansible_os_family == "Suse")
+    #- include_tasks: tasks/azure.yml
+    #- include_tasks: tasks/aws.yml
+    #- include_tasks: tasks/terraform.yml
+    #- include_tasks: tasks/networktools.yml
+    #- include_tasks: tasks/decorations.yml
+    #- include_tasks: tasks/firefoxextensions.yml
+    #- include_tasks: tasks/main.yml
+    #- include_tasks: tasks/LFSrequired.yml
+    
+  handlers:
+    #- include_tasks: handlers/main.yml
+    
+    
+    #Old stuff
+    
+        #- include_tasks: tasks/fedorarepos.yml
       #when: ansible_os_family == "RedHat"
     #- include_tasks: tasks/suserepos.yml
       #when: ansible_os_family == "Suse"
@@ -39,16 +84,3 @@
     #- include_tasks: tasks/mxlinuxpackages.yml
       #when: ansible_os_family == "Debian"
     #- include_tasks: tasks/snaps.yml
-    #- include_tasks: tasks/fonts.yml
-      #when: (ansible_os_family == "RedHat") or (ansible_os_family == "Suse")
-    #- include_tasks: tasks/azure.yml
-    #- include_tasks: tasks/aws.yml
-    #- include_tasks: tasks/terraform.yml
-    #- include_tasks: tasks/networktools.yml
-    #- include_tasks: tasks/decorations.yml
-    #- include_tasks: tasks/firefoxextensions.yml
-    #- include_tasks: tasks/main.yml
-    #- include_tasks: tasks/LFSrequired.yml
-    
-  handlers:
-    #- include_tasks: handlers/main.yml

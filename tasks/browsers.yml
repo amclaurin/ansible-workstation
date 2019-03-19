@@ -8,8 +8,14 @@
     become: yes
     ignore_errors: yes
     package:
-      name: falcon
-      state: "{{ falcon }}"
+      name: falkon
+      state: "{{ falkon }}"
+  - name: Install Chromium
+    become: yes
+    ignore_errors: yes
+    package:
+      name: chromium
+      state: "{{ chromium }}"
   - name: Install Opera Browser
     become: yes
     ignore_errors: yes
@@ -22,3 +28,15 @@
     package:
       name: vivaldi-stable
       state: "{{ vivaldi }}"
+  - name: Install Brave Browser
+    become: yes
+    ignore_errors: yes
+    package:
+      name: brave-browser
+      state: "{{ brave-browser }}"
+  - name: Install Brave Keyring
+    become: yes
+    ignore_errors: yes
+    package:
+      name: brave-keyring
+      state: "{{ brave-browser }}"

@@ -1,0 +1,4 @@
+  - name: Add Vivaldi Zypper Repository
+    become: yes
+    zypper_repository:
+      repo: https://repo.vivaldi.com/archive/vivaldi-suse.repo

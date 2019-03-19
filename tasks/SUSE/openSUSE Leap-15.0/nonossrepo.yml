@@ -1,0 +1,9 @@
+  - name: Add multiple repositories into the same file (1/1)
+    become: yes
+    zypper_repository:
+      name: openSUSE-Leap-Non-Oss
+      description: openSUSE-Leap-Non-Oss
+      repo: http://download.opensuse.org/distribution/leap/15.0/repo/non-oss/
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes

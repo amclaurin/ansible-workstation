@@ -1,45 +1,57 @@
 ---
 
-    - name: Install Microsoft fonts
-      become: yes
-      dnf:
-        name: https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
-        state: present
-      when: ansible_os_family == "RedHat"
-    - name: Install Microsoft fonts for Suse
-      become: yes
-      zypper:
-        name: fetchmsttfonts
-        state: present
-      when: ansible_os_family == "Suse"
-    - name: Download Google fonts
-      get_url:
-        url: https://github.com/google/fonts/archive/master.tar.gz
-        dest: "{{ user_home_directory }}/Downloads/master.tar.gz"
-        mode: 0440
-    - name: Extract the downloaded fonts
-      unarchive:
-        src: "{{ user_home_directory }}/Downloads/master.tar.gz"
-        dest: "{{ user_home_directory }}/Downloads/"
-    - name: Make the target directory
-      become: yes
-      shell: mkdir -p /usr/share/fonts/truetype/google-fonts
-    - name: Move the fonts
-      become: yes
-      shell: find /home/alistair/Downloads/fonts-master/ -name "*.ttf" -exec sudo install -m644 {} /usr/share/fonts/truetype/google-fonts/ \;
-    - name: Download Noobslab MacBuntu fonts
-      get_url:
-        url: http://drive.noobslab.com/data/Mac/macfonts.zip
-        dest: "{{ user_home_directory }}/Downloads/macfonts.zip"
-        mode: 0440
-    - name: Make the target directory
-      become: yes
-      shell: mkdir -p /usr/share/fonts/apple-fonts
-    - name: Extract the downloaded fonts
-      become: yes
-      unarchive:
-        src: "{{ user_home_directory }}/Downloads/macfonts.zip"
-        dest: /usr/share/fonts/apple-fonts
+  - name: Install xorg-x11-font-utils
+    become: yes
+    ignore_errors: yes
+    package:
+      name: font-util
+      state: present
+  - name: Install fontconfig
+    become: yes
+    ignore_errors: yes
+    package:
+      name: fontconfig
+      state: present
+  - name: Install Microsoft fonts
+    become: yes
+    dnf:
+      name: https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+      state: present
+    when: ansible_os_family == "RedHat"
+  - name: Install Microsoft fonts for Suse
+    become: yes
+    zypper:
+      name: fetchmsttfonts
+      state: present
+    when: ansible_os_family == "Suse"
+    #- name: Download Google fonts
+      #get_url:
+        #url: https://github.com/google/fonts/archive/master.tar.gz
+        #dest: "{{ user_home_directory }}/Downloads/master.tar.gz"
+        #mode: 0440
+    #- name: Extract the downloaded fonts
+      #unarchive:
+        #src: "{{ user_home_directory }}/Downloads/master.tar.gz"
+        #dest: "{{ user_home_directory }}/Downloads/"
+    #- name: Make the target directory
+      #become: yes
+      #shell: mkdir -p /usr/share/fonts/truetype/google-fonts
+    #- name: Move the fonts
+      #become: yes
+      #shell: find /home/alistair/Downloads/fonts-master/ -name "*.ttf" -exec sudo install -m644 {} /usr/share/fonts/truetype/google-fonts/ \;
+    #- name: Download Noobslab MacBuntu fonts
+      #get_url:
+        #url: http://drive.noobslab.com/data/Mac/macfonts.zip
+        #dest: "{{ user_home_directory }}/Downloads/macfonts.zip"
+        #mode: 0440
+    #- name: Make the target directory
+      #become: yes
+      #shell: mkdir -p /usr/share/fonts/apple-fonts
+    #- name: Extract the downloaded fonts
+      #become: yes
+      #unarchive:
+        #src: "{{ user_home_directory }}/Downloads/macfonts.zip"
+        #dest: /usr/share/fonts/apple-fonts
     #- name: Install extra fonts
     #dnf: name={{ item }} state=installed
     #with_items:
@@ -61,6 +73,6 @@
       #- overpass-fonts
       #- terminus-fonts
     #when: install_extra_fonts
-    - name: Update the fonts cache
-      become: yes
-      shell: fc-cache -f > /dev/null
+  - name: Update the fonts cache
+    become: yes
+    shell: fc-cache -f > /dev/null

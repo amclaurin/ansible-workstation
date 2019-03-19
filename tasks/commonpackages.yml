@@ -1,0 +1,65 @@
+---
+
+# Common Packages
+
+  - name: Install Curl
+    become: yes
+    ignore_errors: yes
+    package:
+      name: curl
+      state: "{{ curl }}"
+  - name: Install Git
+    become: yes
+    ignore_errors: yes
+    package:
+      name: git
+      state: "{{ git }}"
+  - name: Install HTOP
+    become: yes
+    ignore_errors: yes
+    package:
+      name: htop
+      state: "{{ htop }}"
+
+  #- name: Install Chromium
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: chromium
+      #state: present
+  #- name: Install Falkon
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: falkon
+      #state: present
+
+  # - name: Install Powershell
+  #   become: yes
+  #   shell: "zypper install https://github.com/PowerShell/PowerShell/releases/download/v6.0.2/powershell-6.0.2-1.rhel.7.x86_64.rpm"
+
+  #- name: Install Thunderbird
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: thunderbird
+      #state: present
+  #- name: Install Tilix
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: tilix
+      #state: present
+
+  #- name: Install snapd
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: snapd
+      #state: present
+  #- name: Install Gnome Keyring - needed for Mailspring
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: gnome-keyring
+      #state: present

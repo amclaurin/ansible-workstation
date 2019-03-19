@@ -8,18 +8,6 @@
 # Installer Packages  - Used to speed up later stages or bindings not automatically installed
 #
 
-# Install Fast Mirror, useful for speeding up downloads
-
-fastmirror: present
-
-# Install Python Bindings foor SELinux - needed for Fedora, less so for other distributions
-
-libselinux_python: present
-
-# Font utilities - Used to manage additional fonts as they are installed - not needed if you are happy with Distro's default fonts
-
-fontutils: present
-
 #
 # Update KDE
 #
@@ -28,7 +16,15 @@ fontutils: present
 # Does not apply to KDE Neon or OpenSUSE Tumbleweed
 #
 
-updatekde: yes
+update_kde: yes
+
+
+#Install Non OSS Repositories
+
+#Supported for Suse Based Distros - Needed for Package Based Opera Install
+
+
+suse_non_oss_repo: yes
 
 # 
 # Standard Linux Packages - used for general management
@@ -72,4 +68,23 @@ vivaldi: present
 
 # Brave - Open Source Chrome Based Web Browser
 
-brave: present
+brave-browser: present
+
+
+#Editors - Choose One Or All Of Them
+
+# Microsoft Visual Studio Code - Themable editor - From Microsoft not the 100% pure OSS Version
+
+code: present
+
+# Atom - A themeable Text Editor
+
+atom: present
+
+# Sublime Text - https://www.sublimetext.com/docs/3/linux_repositories.html
+
+sublime-text: present
+
+
+
+
