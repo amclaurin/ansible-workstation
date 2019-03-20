@@ -68,14 +68,14 @@ vivaldi: present
 
 # Brave - Open Source Chrome Based Web Browser
 
-brave-browser: present
+brave_browser: present
 
 
 #Editors - Choose One Or All Of Them
 
 # Microsoft Visual Studio Code - Themable editor - From Microsoft not the 100% pure OSS Version
 
-code: present
+vs_code: present
 
 # Atom - A themeable Text Editor
 

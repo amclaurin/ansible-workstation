@@ -1,0 +1,9 @@
+  - name: Add Non OSS Repository for SUSE Tumbleweed
+    become: yes
+    zypper_repository:
+      name: openSUSE-Leap-Non-Oss
+      description: openSUSE-Leap-Non-Oss
+      repo: https://download.opensuse.org/tumbleweed/repo/non-oss/
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes

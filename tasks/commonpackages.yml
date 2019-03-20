@@ -20,19 +20,13 @@
     package:
       name: htop
       state: "{{ htop }}"
+  - name: Install Python PIP
+    become: yes
+    ignore_errors: yes
+    package:
+      name: python-pip
+      state: "present"
 
-  #- name: Install Chromium
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: chromium
-      #state: present
-  #- name: Install Falkon
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: falkon
-      #state: present
 
   # - name: Install Powershell
   #   become: yes

@@ -1,0 +1,9 @@
+  - name: Add Vivaldi Zypper Repository
+    become: yes
+    zypper_repository:
+      repo: http://repo.vivaldi.com/archive/rpm/x86_64
+      name: Vivaldi
+      overwrite_multiple: yes
+      runrefresh: yes
+      state: present
+      enabled: yes

@@ -1,4 +1,4 @@
-  - name: Add multiple repositories into the same file (5/7)
+  - name: Add KDE repositories into the same file (1/3)
     become: yes
     zypper_repository:
       name: KQ
@@ -8,7 +8,7 @@
       state: present
       priority: 75
       runrefresh: yes
-  - name: Add multiple repositories into the same file (6/7)
+  - name: Add KDE repositories into the same file (2/3)
     become: yes
     zypper_repository:
       name: KF
@@ -18,7 +18,7 @@
       state: present
       priority: 75
       runrefresh: yes
-  - name: Add multiple repositories into the same file (7/7)
+  - name: Add KDE repositories into the same file (3/3)
     become: yes
     zypper_repository:
       name: KA

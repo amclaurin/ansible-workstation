@@ -33,10 +33,12 @@
     ignore_errors: yes
     package:
       name: brave-browser
-      state: "{{ brave-browser }}"
+      state: "{{ brave_browser }}"
+    when: ansible_facts['distribution_file_variety'] != "SUSE"
   - name: Install Brave Keyring
     become: yes
     ignore_errors: yes
     package:
       name: brave-keyring
-      state: "{{ brave-browser }}"
+      state: "{{ brave_browser }}"
+    when: ansible_facts['distribution_file_variety'] != "SUSE"

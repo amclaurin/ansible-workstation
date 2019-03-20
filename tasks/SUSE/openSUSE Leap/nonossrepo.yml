@@ -1,4 +1,4 @@
-  - name: Add multiple repositories into the same file (1/1)
+  - name: Add Non OSS Repository for SUSE Leap 15.0
     become: yes
     zypper_repository:
       name: openSUSE-Leap-Non-Oss

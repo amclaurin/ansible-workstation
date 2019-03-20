@@ -1,6 +1,61 @@
-  - name: Install Microsoft VS Code
-    become: yes
-    ignore_errors: yes
-    package:
-      name: code
-      state: present
+
+
+    - name: Add VS Code YUM Repository
+      yum_repository:
+        name: vscode
+        description: Visual Studio Code
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgcheck: no
+      when: (ansible_facts['os_family'] == "RedHat" and vs_code == "present")
+
+    - name: Add VS Code Zypper Repository
+      become: yes
+      zypper_repository:
+        repo: https://packages.microsoft.com/yumrepos/vscode
+        name: vscode
+        description: Visual Studio Code
+        disable_gpg_check: yes
+        overwrite_multiple: yes
+        runrefresh: yes
+        state: present
+        enabled: yes
+      when: (ansible_facts['os_family'] == "Suse" and vs_code == "present")
+
+    - name: Install Microsoft VS Code
+      become: yes
+      ignore_errors: yes
+      package:
+        name: code
+        state: "{{ vs_code }}"
+
+    - name: Add Atom YUM Repository
+      vars:
+        rpmurl: "https://packagecloud.io/AtomEditor/atom/el/7/x86_64"
+      yum_repository:
+        name: Atom
+        description: Atom Editor
+        baseurl: "{{ rpmurl }}"
+        gpgcheck: no
+      when: (ansible_facts['os_family'] == "RedHat" and atom == "present")
+
+    - name: Add VS Code Zypper Repository
+      vars:
+        rpmurl: "https://packagecloud.io/AtomEditor/atom/el/7/x86_64"
+      become: yes
+      zypper_repository:
+        repo: "{{ rpmurl }}"
+        name: Atom
+        description: Atom Editor
+        disable_gpg_check: yes
+        overwrite_multiple: yes
+        runrefresh: yes
+        state: present
+        enabled: yes
+      when: (ansible_facts['os_family'] == "Suse" and atom == "present")
+
+    - name: Install Atom Editor
+      become: yes
+      ignore_errors: yes
+      package:
+        name: atom
+        state: "{{ atom }}"
