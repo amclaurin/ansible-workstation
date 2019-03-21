@@ -1,3 +1,115 @@
+#
+# Add Additional Repositories
+#
+
+# Firefox: OS Vendor Supplied
+# Falcom: OS Vendor Supplied
+# Opera - 
+
+# Opera
+
+  - name: Add Non OSS Repository for SUSE Leap 15.0
+    become: yes
+    zypper_repository:
+      name: openSUSE-Leap-Non-Oss
+      description: openSUSE-Leap-Non-Oss
+      repo: http://download.opensuse.org/distribution/leap/15.0/repo/non-oss/
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes
+    when:
+      - ansible_facts['distribution'] == "openSUSE Leap"
+      - ansible_facts['distribution_version'] == "15.0"
+      - opera == "present"
+      
+  - name: Add Non OSS Repository for SUSE Leap 15.0
+    become: yes
+    zypper_repository:
+      name: openSUSE-Leap-Non-Oss
+      description: openSUSE-Leap-Non-Oss
+      repo: http://download.opensuse.org/tumbleweed/repo/non-oss/
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes
+    when:
+      - ansible_facts['distribution'] == "openSUSE Tumbleweed"
+      - opera == "present"
+      
+  - name: Add an Apt signing key for Opera Repo, for KDE neon
+    become: yes
+    apt_key:
+      url: https://deb.opera.com/archive.key
+      state: present
+    when:
+      - ansible_facts['distribution'] == "KDE neon"
+      - opera == "present"
+      
+  - name: Add Apt Opera Repository for KDE neon
+    become: yes
+    apt_repository:
+      repo: deb https://deb.opera.com/opera-stable/ stable non-free
+      state: present
+      update_cache: yes
+      validate_certs: no
+      filename: opera-stable
+    when:
+      - ansible_facts['distribution'] == "KDE neon"
+      - opera == "present"
+
+# Vivaldi
+
+  - name: Add Vivaldi Zypper Repository for Suse
+    become: yes
+    zypper_repository:
+      repo: https://repo.vivaldi.com/archive/vivaldi-suse.repo
+    when: 
+      - ansible_facts['distribution_file_variety'] == "SUSE"
+      - vivaldi == "present"
+      
+  - name: Add an Apt signing key for Vivaldi, for KDE neon
+    become: yes
+    apt_key:
+      url: http://repo.vivaldi.com/stable/linux_signing_key.pub
+      state: present
+    when:
+      - ansible_facts['distribution'] == "KDE neon"
+      - vivaldi == "present"
+
+  - name: Add Apt Vivaldi Repository for KDE neon
+    become: yes
+    apt_repository:
+      repo: deb [arch=i386,amd64] http://repo.vivaldi.com/stable/deb/ stable main
+      state: present
+      update_cache: yes
+      validate_certs: no
+      filename: vivaldi
+    when:
+      - ansible_facts['distribution'] == "KDE neon"
+      - vivaldi == "present"
+
+# Brave Browser - commented out for now, install is problematic
+
+  #- name: Add an Apt signing key for Brave, for KDE neon
+    #become: yes
+    #apt_key:
+      #url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+      #state: present
+    #when:
+      #- ansible_facts['distribution'] == "KDE neon"
+      #- brave_browser == "present"
+
+  #- name: Add Apt Brave Browser Repository for KDE neon
+    #become: yes
+    #apt_repository:
+      #repo: "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com `lsb_release -sc"
+      #state: present
+      #update_cache: yes
+      #validate_certs: no
+      #filename: brave
+    #when:
+      #- ansible_facts['distribution'] == "KDE neon"
+      #- brave_browser == "present"
+
   - name: Install Firefox
     become: yes
     ignore_errors: yes
@@ -16,29 +128,39 @@
     package:
       name: chromium
       state: "{{ chromium }}"
-  - name: Install Opera Browser
+  - name: Install Opera Browser - Suse
     become: yes
     ignore_errors: yes
     package:
       name: opera
       state: "{{ opera }}"
+    when: 
+      - ansible_facts['distribution_file_variety'] == "SUSE"
+  - name: Install Opera Browser - KDE Neon
+    become: yes
+    ignore_errors: yes
+    package:
+      name: opera-stable
+      state: "{{ opera }}"
+    when: 
+      - ansible_facts['distribution_file_variety'] != "SUSE"
   - name: Install Vivaldi Browser
     become: yes
     ignore_errors: yes
     package:
       name: vivaldi-stable
       state: "{{ vivaldi }}"
-  - name: Install Brave Browser
-    become: yes
-    ignore_errors: yes
-    package:
-      name: brave-browser
-      state: "{{ brave_browser }}"
-    when: ansible_facts['distribution_file_variety'] != "SUSE"
-  - name: Install Brave Keyring
-    become: yes
-    ignore_errors: yes
-    package:
-      name: brave-keyring
-      state: "{{ brave_browser }}"
-    when: ansible_facts['distribution_file_variety'] != "SUSE"
+  #- name: Install Brave Browser
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: brave-browser
+      #state: "{{ brave_browser }}"
+    #when: ansible_facts['distribution'] == "KDE neon"
+  #- name: Install Brave Keyring
+    #become: yes
+    #ignore_errors: yes
+    #package:
+      #name: brave-keyring
+      #state: "{{ brave_browser }}"
+    #when: ansible_facts['distribution'] == "KDE neon"
