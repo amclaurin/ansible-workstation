@@ -22,7 +22,7 @@
       - ansible_facts['distribution_version'] == "15.0"
       - opera == "present"
       
-  - name: Add Non OSS Repository for SUSE Leap 15.0
+  - name: Add Non OSS Repository for SUSE Tubbleweed
     become: yes
     zypper_repository:
       name: openSUSE-Leap-Non-Oss

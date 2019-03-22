@@ -7,7 +7,8 @@
     ignore_errors: yes
     package:
       name: curl
-      state: "{{ curl }}"
+      state: "present"
+    when: (curl == "present" or ansible_facts['distribution'] == "KDE neon")
   - name: Install Git
     become: yes
     ignore_errors: yes
@@ -26,8 +27,31 @@
     package:
       name: python-pip
       state: "present"
+      
+# The following are needed for Microsoft packages on Ubuntu / apt based systems, I've chosen to install them as core packages.
 
-
+  - name: Install apt-transport-https
+    become: yes
+    ignore_errors: yes
+    package:
+      name: apt-transport-https
+      state: "present"
+    when: ansible_facts['distribution'] == "KDE neon"
+  - name: Install lsb-release
+    become: yes
+    ignore_errors: yes
+    package:
+      name: lsb-release
+      state: "present"
+    when: ansible_facts['distribution'] == "KDE neon"
+  - name: Install gpg
+    become: yes
+    ignore_errors: yes
+    package:
+      name: gpg
+      state: "present"
+    when: ansible_facts['distribution'] == "KDE neon"
+  
   # - name: Install Powershell
   #   become: yes
   #   shell: "zypper install https://github.com/PowerShell/PowerShell/releases/download/v6.0.2/powershell-6.0.2-1.rhel.7.x86_64.rpm"

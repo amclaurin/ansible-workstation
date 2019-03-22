@@ -1,0 +1,72 @@
+---
+
+  #- name: Import the RPM key for the YUM repository
+    #rpm_key:
+      #state: present
+      #key: https://packages.cloud.google.com/yum/doc/yum-key.gpg
+    #when: (ansible_facts['os_family'] == "RedHat" or ansible_facts['os_family'] == "Suse")
+    
+  #- name: Import the RPM key for the YUM repository
+    #rpm_key:
+      #state: present
+      #key: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    #when: (ansible_facts['os_family'] == "RedHat" or ansible_facts['os_family'] == "Suse")
+    
+  - name: Add Google Cloud SDK YUM Repository for Red Hat or Suse
+    yum_repository:
+      name: google-cloud-sdk
+      description: Google Cloud SDK
+      baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64
+      gpgcheck: yes
+      repo_gpgcheck: yes
+      gpgkey:
+        https://packages.cloud.google.com/yum/doc/yum-key.gpg
+        https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    when: (ansible_facts['os_family'] == "RedHat" or ansible_facts['os_family'] == "Suse")
+    
+# Experiment to see if importing the RPMkey woorks for Suse
+
+  #- name: Import the RPM key for the Zypper repository
+    #rpm_key:
+      #state: present
+      #key: http://apt.sw.be/RPM-GPG-KEY.dag.txt
+    #when: (ansible_facts['os_family'] == "Suse" and google_cloud_sdk == "present")
+
+  #- name: Add Azure CLI Zypper Repository for Suse
+    #become: yes
+    #zypper_repository:
+      #repo: https://packages.microsoft.com/yumrepos/google-cloud-sdk
+      #name: google-cloud-sdk
+      #description: Azure CLI
+      ##disable_gpg_check: yes
+      #overwrite_multiple: yes
+      #runrefresh: yes
+      #state: present
+      #enabled: yes
+    #when: (ansible_facts['os_family'] == "Suse" and google_cloud_sdk == "present")
+    
+  - name: Add an Apt signing key for Google Cloud SDK, for KDE neon
+    become: yes
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+    when: ansible_facts['distribution'] == "KDE neon"
+
+
+  - name: Add Apt Google Cloud SDK Repository for KDE neon
+    become: yes
+    apt_repository:
+      repo: deb http://packages.cloud.google.com/apt cloud-sdk-bionic main
+      state: present
+      update_cache: yes
+      validate_certs: no
+      filename: google-cloud-sdk
+    when: ansible_facts['distribution'] == "KDE neon"
+
+
+  - name: Install Google Cloud SDK
+    become: yes
+    ignore_errors: yes
+    package:
+      name: google-cloud-sdk
+      state: "{{ google_cloud_sdk }}"

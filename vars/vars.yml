@@ -43,6 +43,16 @@ git: present
 htop: present
 
 #
+# Add additional fonts - less important now most distros ship decent font sets but you may find them useful
+#
+
+# Microsoft fonts - useful for O365 but not OSS!
+
+ms_core_fonts: present
+
+google_fonts: present
+
+#
 # Web Browsers - useful for everything
 #
 
@@ -81,9 +91,23 @@ vs_code: present
 
 atom: present
 
-# Sublime Text - https://www.sublimetext.com/docs/3/linux_repositories.html
 
-sublime-text: present
+
+# Public Cloud CLI tools
+
+# AWS CLI and Boto
+
+awscli: present
+boto: present
+
+# Microsoft Azure CLI
+
+azure_cli: present
+
+# Google Cloud Platform (GCP) CLI
+
+google_cloud_sdk: present
+
 
 
 

@@ -37,20 +37,15 @@
 
     #- include_tasks: tasks/commonpackages.yml
 
-    #- include_tasks: "{{ distributionpath }}/vivaldirepo.yml"
-      #when: 
-        #- vivaldi == "present"
-    #- include_tasks: "{{ distributionpath }}/braverepo.yml"
-      #when: 
-        #- brave_browser == "present"
-        #- ansible_facts['distribution_file_variety'] != "SUSE"
     #- include_tasks: tasks/browsers.yml
     #- include_tasks: tasks/fonts.yml
       #when: (ansible_facts['os_family'] == "RedHat" or ansible_facts['os_family'] == "Suse")
-    - include_tasks: tasks/editors.yml
+    #- include_tasks: tasks/editors.yml
     #- include_tasks: tasks/aws.yml
     #- include_tasks: tasks/azure.yml
-    #- include_tasks: tasks/terraform.yml
+    #- include_tasks: tasks/gcp.yml
+      #when: google_cloud_sdk == "present"
+    - include_tasks: tasks/terraform.yml
     #- include_tasks: tasks/networktools.yml
     #- include_tasks: tasks/decorations.yml
     #- include_tasks: tasks/firefoxextensions.yml

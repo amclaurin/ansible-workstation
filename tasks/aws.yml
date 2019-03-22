@@ -1,10 +1,13 @@
 ---
 
-    - name: Install AWS Command Line Tools via PIP
-      pip:
-        name: awscli
-        extra_args: --upgrade --user
-    - name: Install AWS Boto via PIP
-      pip:
-        name: boto
-        extra_args: --upgrade --user
+  - name: Install AWS Command Line Tools via PIP
+    pip:
+      name: awscli
+      extra_args: --upgrade --user
+    when: awscli == "present"
+      
+  - name: Install AWS Boto via PIP
+    pip:
+      name: boto
+      extra_args: --upgrade --user
+    when: boto == "present"

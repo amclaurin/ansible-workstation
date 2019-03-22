@@ -1,15 +1,25 @@
 ---
 
-    - name: Install Terraform V 0.11.7
-      get_url:
-        url: https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
-        dest: "{{ user_home_directory }}/Downloads/terraform_0.11.11_linux_amd64.zip"
-        mode: 0555
-    - name: Make the Terraform Target Directory
-      become: yes
-      shell: mkdir -p "{{ user_home_directory }}/.local/bin"
-    - name: Unzip Terraform to /usr/local/bin
-      unarchive:
-        src: "{{ user_home_directory }}/Downloads/terraform_0.11.11_linux_amd64.zip"
-        dest: "{{ user_home_directory }}/.local/bin"
-        mode: 0555
+
+  - name: Install Terraform V 0.11.13
+    get_url:
+      url: https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
+      dest: "{{ user_home_directory }}/Downloads/terraform_0.11.11_linux_amd64.zip"
+      mode: 0555
+  - name: Create the target directory for Terraform
+    file:
+      path: "{{ user_home_directory }}/.local/bin"
+      state: directory
+      mode: 0755
+  - name: Unzip Terraform to .local/bin
+    unarchive:
+      src: "{{ user_home_directory }}/Downloads/terraform_0.11.11_linux_amd64.zip"
+      dest: "{{ user_home_directory }}/.local/bin"
+      mode: 0555
+
+# Note you can discover the current version of Terraform with the following command
+#
+# echo "https://releases.hashicorp.com/terraform/$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')/terraform_$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')_linux_amd64.zip"
+
+# Need jq and is not recommended by Hashicorp
+#
