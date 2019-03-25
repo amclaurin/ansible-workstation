@@ -1,12 +1,14 @@
 ---
 
-    #- name: Install fedora28 backgrounds
-      #become: yes
-      #package:
-        #name: f28-backgrounds-kde
-        #state: present
-      #when: ansible_os_family == "Fedora"
-    #- name: Install some cool wallpapers (optional)
+  #- name: Install fedora28 backgrounds
+    #become: yes
+    #package:
+      #name: f29-backgrounds-kde
+      #state: present
+    #when: ( ansible_os_family == "Fedora" and f29_backgrounds_kde == "present" )
+    
+  #- name: Install MacBuntu Wallpapers
+    #block:
       #get_url:
         #url: http://drive.noobslab.com/data/Mac/MacBuntu-Wallpapers.zip
         #dest: "{{ user_home_directory }}/Downloads/MacBuntu-Wallpapers.zip"
@@ -15,10 +17,13 @@
       #unarchive:
         #src: "{{ user_home_directory }}/Downloads/MacBuntu-Wallpapers.zip"
         #dest: "{{ user_home_directory }}/Pictures/"
-    - name: Install icon set from git
-      git:
-        repo: https://git.opendesktop.org/fabianalexis/antu-icons
-        dest: "{{ user_home_directory }}/.local/share/icons/antu-icons"
+    #when: ( macbuntu_wallpapers == "present")
+
+  #- name: Install Antu icon set from git
+    #git:
+      #repo: https://git.opendesktop.org/fabianalexis/antu-icons
+      #dest: "{{ user_home_directory }}/.local/share/icons/antu-icons"
+
     #- name: run make to install the icons
       #make:
         #chdir: "{{ user_home_directory }}/Downloads/pop-os-icons"
@@ -29,3 +34,22 @@
         #chdir: "{{ user_home_directory }}/Downloads/pop-os-icons"
         #target: post-install
       #become: yes
+
+  #- name: Install Arc KDE Themes
+    #block:
+      #- get_url:
+          #url: "{{ gh_url }}/{{ gh_repo }}/archive/master.tar.gz"
+          #dest: "{{ user_home_directory }}/Downloads/arc_kde.tar.gz"
+          #mode: 0440
+      #- unarchive:
+          #src: "{{ user_home_directory }}/Downloads/arc_kde.tar.gz"
+          #dest: "{{ user_home_directory }}/Downloads/"
+    #when: (arc_kde == "present")
+    
+  - name: Ansible copy multiple files with_items
+    copy:
+      src: "{{ user_home_directory }}/Downloads/arc-kde-master/{{item}}/"
+      dest: "{{ user_home_directory }}/.local/share/{{item}}/"
+      mode: 0774
+    with_items:
+      ['aurorae','color-schemes','konsole','konversation','Kvantum','plasma','wallpapers','yakuake']

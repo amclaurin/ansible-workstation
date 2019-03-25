@@ -2,6 +2,21 @@
 
 # Common Packages
 
+  - name: Install Fast Mirror
+    become: yes
+    ignore_errors: yes
+    package:
+      name: yum-fastestmirror
+      state: present
+      
+  - name: Install Python bindings for SELinux - needed for some later stages to work on Red Hat systems
+    become: yes
+    ignore_errors: yes
+    package:
+      name: libselinux-python
+      state: present
+    when: ansible_facts['os_family'] == "RedHat"
+      
   - name: Install Curl
     become: yes
     ignore_errors: yes
@@ -9,18 +24,21 @@
       name: curl
       state: "present"
     when: (curl == "present" or ansible_facts['distribution'] == "KDE neon")
+    
   - name: Install Git
     become: yes
     ignore_errors: yes
     package:
       name: git
       state: "{{ git }}"
+
   - name: Install HTOP
     become: yes
     ignore_errors: yes
     package:
       name: htop
       state: "{{ htop }}"
+
   - name: Install Python PIP
     become: yes
     ignore_errors: yes
@@ -29,55 +47,14 @@
       state: "present"
       
 # The following are needed for Microsoft packages on Ubuntu / apt based systems, I've chosen to install them as core packages.
-
-  - name: Install apt-transport-https
+    
+  - name: Install KDE Neon Core Packages
     become: yes
     ignore_errors: yes
     package:
-      name: apt-transport-https
+      name: 
+      - lsb-release
+      - apt-transport-https
+      - gpg
       state: "present"
     when: ansible_facts['distribution'] == "KDE neon"
-  - name: Install lsb-release
-    become: yes
-    ignore_errors: yes
-    package:
-      name: lsb-release
-      state: "present"
-    when: ansible_facts['distribution'] == "KDE neon"
-  - name: Install gpg
-    become: yes
-    ignore_errors: yes
-    package:
-      name: gpg
-      state: "present"
-    when: ansible_facts['distribution'] == "KDE neon"
-  
-  # - name: Install Powershell
-  #   become: yes
-  #   shell: "zypper install https://github.com/PowerShell/PowerShell/releases/download/v6.0.2/powershell-6.0.2-1.rhel.7.x86_64.rpm"
-
-  #- name: Install Thunderbird
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: thunderbird
-      #state: present
-  #- name: Install Tilix
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: tilix
-      #state: present
-
-  #- name: Install snapd
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: snapd
-      #state: present
-  #- name: Install Gnome Keyring - needed for Mailspring
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: gnome-keyring
-      #state: present

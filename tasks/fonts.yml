@@ -15,6 +15,7 @@
   #- name: install ubuntu utilities
     #become: yes
     #state: present
+    #ignore_errors: yes
     #package:
       #name:
       #- libfreetype6
@@ -22,6 +23,8 @@
       #- libfontconfig
     #update_cache: yes
     #when: ansible_facts['distribution'] == "KDE neon"
+    
+    
   #- name: Install Microsoft fonts
     #become: yes
     #dnf:
@@ -44,71 +47,90 @@
     #package:
       #name: ttf-mscorefonts-installer
       #state: "{{ ms_core_fonts }}"
-    #when: ansible_facts['distribution'] == "KDE neon"
-  #- name: Create the download directory for the Google fonts
-    #file:
-      #path: "{{ user_home_directory }}/Downloads/google-fonts/"
-      #state: directory
-      #mode: 0755
-  #- name: Download Google fonts
-    #get_url:
-      #url: https://github.com/google/fonts/archive/master.tar.gz
-      #dest: "{{ user_home_directory }}/Downloads/google-fonts/master.tar.gz"
-      #mode: 0440
-  #- name: Extract the downloaded fonts
-    #unarchive:
-      #src: "{{ user_home_directory }}/Downloads/google-fonts/master.tar.gz"
-      #dest: "{{ user_home_directory }}/Downloads/google-fonts/"
-  #- name: Create the target directory for the fonts
-    #become: yes
-    #file:
-      #path: /usr/share/fonts/truetype/google-fonts
-      #state: directory
-      #mode: 0755
-  #- name: Copy files from downloads to TTF font directory
-    #become: yes
-    #copy: 
-      #src: "{{ user_home_directory }}/Downloads/google-fonts/fonts-master/apache/"
-      #dest: /usr/share/fonts/truetype/google-fonts
+    #when:
+      #- ansible_facts['distribution'] == "KDE neon"
+      #- ms_core_fonts == "present"
+      
+#
+# Install Google Fonts
+#
 
-  - name: Download Noobslab MacBuntu fonts
-    get_url:
-      url: http://drive.noobslab.com/data/Mac/macfonts.zip
-      dest: "{{ user_home_directory }}/Downloads/macfonts.zip"
-      mode: 0440
-  - name: Create the target directory for the fonts
-    become: yes
+  - name: Create the download directory for the Google fonts
     file:
-      path: /usr/share/fonts/truetype/macbuntu-fonts
+      path: "{{ user_home_directory }}/Downloads/google-fonts/"
       state: directory
       mode: 0755
-  - name: Extract the downloaded fonts
-    become: yes
-    unarchive:
-      src: "{{ user_home_directory }}/Downloads/macfonts.zip"
-      dest: /usr/share/fonts/truetype/macbuntu-fonts
+    
+  - name: Download Google fonts
+    block:
+      - get_url:
+          url: https://github.com/google/fonts/archive/master.tar.gz
+          dest: "{{ user_home_directory }}/Downloads/google-fonts/master.tar.gz"
+          mode: 0440
+    #- name: Extract the downloaded fonts
+      - unarchive:
+          src: "{{ user_home_directory }}/Downloads/google-fonts/master.tar.gz"
+          dest: "{{ user_home_directory }}/Downloads/google-fonts/"
+    #- name: Create the target directory for the fonts
 
+      - file:
+          path: /usr/share/fonts/truetype/google-fonts
+          state: directory
+          mode: 0755
+        become: yes
+    #- name: Copy files from downloads to TTF font directory
+
+      - copy: 
+          src: "{{ user_home_directory }}/Downloads/google-fonts/fonts-master/apache/"
+          dest: /usr/share/fonts/truetype/google-fonts
+        become: yes
+    when: google_fonts =="present"
+
+  #- name: Download Noobslab MacBuntu fonts
+    #block:
+      #- get_url:
+        #url: http://drive.noobslab.com/data/Mac/macfonts.zip
+        #dest: "{{ user_home_directory }}/Downloads/macfonts.zip"
+        #mode: 0440
+    ##- name: Create the target directory for the fonts
+      #become: yes
+      #file:
+        #path: /usr/share/fonts/truetype/macbuntu-fonts
+        #state: directory
+        #mode: 0755
+    ##- name: Extract the downloaded fonts
+      #become: yes
+      #unarchive:
+        #src: "{{ user_home_directory }}/Downloads/macfonts.zip"
+        #dest: /usr/share/fonts/truetype/macbuntu-fonts
+    #when: macbuntu_fonts == "present"
+    
+    
     #- name: Install RHEL extra fonts
-    #dnf: name={{ item }} state=installed
-    #with_items:
-      #- adobe-source-code-pro-fonts
-      #- dejavu-sans-fonts
-      #- dejavu-sans-mono-fonts
-      #- dejavu-serif-fonts
-      #- gnu-free-fonts-common
-      #- gnu-free-mono-fonts
-      #- gnu-free-sans-fonts
-      #- gnu-free-serif-fonts
-      #- levien-inconsolata-fonts
-      #- liberation-fonts-common
-      #- liberation-mono-fonts
-      #- liberation-sans-fonts
-      #- liberation-serif-fonts
-      #- mozilla-fira-mono-fonts
-      #- msimonson-anonymouspro-fonts
-      #- overpass-fonts
-      #- terminus-fonts
-    #when: install_extra_fonts
+      #become: yes
+      #state: present
+      #ignore_errors: yes
+      #package:
+        #name:
+        #- adobe-source-code-pro-fonts
+        #- dejavu-sans-fonts
+        #- dejavu-sans-mono-fonts
+        #- dejavu-serif-fonts
+        #- gnu-free-fonts-common
+        #- gnu-free-mono-fonts
+        #- gnu-free-sans-fonts
+        #- gnu-free-serif-fonts
+        #- levien-inconsolata-fonts
+        #- liberation-fonts-common
+        #- liberation-mono-fonts
+        #- liberation-sans-fonts
+        #- liberation-serif-fonts
+        #- mozilla-fira-mono-fonts
+        #- msimonson-anonymouspro-fonts
+        #- overpass-fonts
+        #- terminus-fonts
+    #when: rhel_additional_fonts == "present"
+    
   - name: Update the fonts cache
     become: yes
     shell: fc-cache -f > /dev/null

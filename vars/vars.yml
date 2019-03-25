@@ -52,6 +52,10 @@ ms_core_fonts: present
 
 google_fonts: present
 
+macbuntu_fonts: present
+
+rhel_additional_fonts: present
+
 #
 # Web Browsers - useful for everything
 #
@@ -91,8 +95,6 @@ vs_code: present
 
 atom: present
 
-
-
 # Public Cloud CLI tools
 
 # AWS CLI and Boto
@@ -108,7 +110,50 @@ azure_cli: present
 
 google_cloud_sdk: present
 
+# Terrraform, choose correct version from https://releases.hashicorp.com/terraform/
 
+terraform: present
+tf_version: "0.11.13"
 
+# Only edit the below if the terraform download breaks
 
+tf_download: https://releases.hashicorp.com/terraform/{{ tf_version }}/terraform_{{ tf_version }}_linux_amd64.zip
+tf_filename: terraform_{{ tf_version }}_linux_amd64.zip
+
+# Network tools
+
+sshuttle: present
+
+#
+# KDE Wallpapers, themes and decorations
+#
+
+# Yosemite themed wallpapers
+
+macbuntu_wallpapers: present
+
+# Fedora additional wallpapers, for Fedora Only
+
+f29_backgrounds_kde: present
+
+# Install Antu Icons
+
+antu_icons: present
+
+#Install Additional Colourful Antu Folder Icons
+
+antu_extras: present
+
+#Install POP Icon Settings
+
+pop_os_icons: present
+
+# Install Arc KDE Packages
+
+arc_kde: present
+
+bin_name: "arc-kde"
+gh_url: "https://github.com/PapirusDevelopmentTeam"
+gh_repo: "arc-kde"
+gh_desc: "Arc KDE"
 
