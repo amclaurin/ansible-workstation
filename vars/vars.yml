@@ -157,3 +157,7 @@ gh_url: "https://github.com/PapirusDevelopmentTeam"
 gh_repo: "arc-kde"
 gh_desc: "Arc KDE"
 
+papirus_icons: present
+
+pa_gh_repo: "papirus-icon-theme"
+pa_gh_desc: "Papirus Icons"
