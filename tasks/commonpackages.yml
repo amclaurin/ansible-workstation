@@ -2,7 +2,7 @@
 
 # Common Packages
 
-  - name: Install Fast Mirror
+  - name: Install Fast Mirror - fails on Ubuntu but not critical
     become: yes
     ignore_errors: yes
     package:
@@ -23,7 +23,7 @@
     package:
       name: curl
       state: "present"
-    when: (curl == "present" or ansible_facts['distribution'] == "KDE neon")
+    when: (curl == "present" or ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu")
     
   - name: Install Git
     become: yes
@@ -48,7 +48,7 @@
       
 # The following are needed for Microsoft packages on Ubuntu / apt based systems, I've chosen to install them as core packages.
     
-  - name: Install KDE Neon Core Packages
+  - name: Install KDE Neon / Ubuntu Core Packages
     become: yes
     ignore_errors: yes
     package:
@@ -57,4 +57,4 @@
       - apt-transport-https
       - gpg
       state: "present"
-    when: ansible_facts['distribution'] == "KDE neon"
+    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )

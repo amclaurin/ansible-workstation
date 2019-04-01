@@ -1,6 +1,6 @@
 
 
-    - name: Add VS Code YUM Repository
+    - name: Add VS Code YUM Repository for RHEL / Fedora
       yum_repository:
         name: vscode
         description: Visual Studio Code
@@ -8,7 +8,7 @@
         gpgcheck: no
       when: (ansible_facts['os_family'] == "RedHat" and vs_code == "present")
 
-    - name: Add VS Code Zypper Repository
+    - name: Add VS Code Zypper Repository for Suse
       become: yes
       zypper_repository:
         repo: https://packages.microsoft.com/yumrepos/vscode
@@ -21,16 +21,16 @@
         enabled: yes
       when: (ansible_facts['os_family'] == "Suse" and vs_code == "present")
       
-    - name: Add an Apt signing key for VS Code, for KDE neon
+    - name: Add an Apt signing key for VS Code, for KDE neon / Ubuntu
       become: yes
       apt_key:
         url: https://packages.microsoft.com/keys/microsoft.asc
         state: present
       when:
-        - ansible_facts['distribution'] == "KDE neon"
+        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
         - vs_code == "present"
 
-    - name: Add Apt VS Code Repository for KDE neon
+    - name: Add Apt VS Code Repository for KDE neon / Ubuntu
       become: yes
       apt_repository:
         repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
@@ -39,7 +39,7 @@
         validate_certs: no
         filename: vscode
       when:
-        - ansible_facts['distribution'] == "KDE neon"
+        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
         - vs_code == "present"
 
     - name: Install Microsoft VS Code
@@ -49,7 +49,7 @@
         name: code
         state: "{{ vs_code }}"
 
-    - name: Add Atom YUM Repository
+    - name: Add Atom YUM Repository for RHEL / Fedora
       vars:
         rpmurl: "https://packagecloud.io/AtomEditor/atom/el/7/x86_64"
       yum_repository:
@@ -59,7 +59,7 @@
         gpgcheck: no
       when: (ansible_facts['os_family'] == "RedHat" and atom == "present")
 
-    - name: Add Atom Zypper Repository
+    - name: Add Atom Zypper Repository for Suse
       vars:
         rpmurl: "https://packagecloud.io/AtomEditor/atom/el/7/x86_64"
       become: yes
@@ -74,16 +74,16 @@
         enabled: yes
       when: (ansible_facts['os_family'] == "Suse" and atom == "present")
       
-    - name: Add an Apt signing key for Atom, for KDE neon
+    - name: Add an Apt signing key for Atom, for KDE neon / Ubuntu
       become: yes
       apt_key:
         url: https://packagecloud.io/AtomEditor/atom/gpgkey
         state: present
       when:
-        - ansible_facts['distribution'] == "KDE neon"
+        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
         - atom == "present"
 
-    - name: Add Apt Atom Repository for KDE neon
+    - name: Add Apt Atom Repository for KDE neon / Ubuntu
       become: yes
       apt_repository:
         repo: deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main
@@ -92,7 +92,7 @@
         validate_certs: no
         filename: atom
       when:
-        - ansible_facts['distribution'] == "KDE neon"
+        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
         - atom == "present"
 
     - name: Install Atom Editor

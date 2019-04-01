@@ -144,10 +144,6 @@ antu_icons: present
 
 antu_extras: present
 
-#Install POP Icon Settings
-
-pop_os_icons: present
-
 # Install Arc KDE Packages
 
 arc_kde: present
@@ -156,6 +152,8 @@ bin_name: "arc-kde"
 gh_url: "https://github.com/PapirusDevelopmentTeam"
 gh_repo: "arc-kde"
 gh_desc: "Arc KDE"
+
+# Note - do not install Papirus Icons if using Ansible version < 2.4, see https://github.com/ansible/ansible/issues/23902
 
 papirus_icons: present
 

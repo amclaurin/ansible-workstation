@@ -35,16 +35,16 @@
       - ansible_facts['distribution'] == "openSUSE Tumbleweed"
       - opera == "present"
       
-  - name: Add an Apt signing key for Opera Repo, for KDE neon
+  - name: Add an Apt signing key for Opera Repo, for KDE neon / Ubuntu
     become: yes
     apt_key:
       url: https://deb.opera.com/archive.key
       state: present
     when:
-      - ansible_facts['distribution'] == "KDE neon"
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       - opera == "present"
       
-  - name: Add Apt Opera Repository for KDE neon
+  - name: Add Apt Opera Repository for KDE neon / Ubuntu
     become: yes
     apt_repository:
       repo: deb https://deb.opera.com/opera-stable/ stable non-free
@@ -53,7 +53,7 @@
       validate_certs: no
       filename: opera-stable
     when:
-      - ansible_facts['distribution'] == "KDE neon"
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       - opera == "present"
 
 # Vivaldi
@@ -66,16 +66,16 @@
       - ansible_facts['distribution_file_variety'] == "SUSE"
       - vivaldi == "present"
       
-  - name: Add an Apt signing key for Vivaldi, for KDE neon
+  - name: Add an Apt signing key for Vivaldi, for KDE neon / Ubuntu
     become: yes
     apt_key:
       url: http://repo.vivaldi.com/stable/linux_signing_key.pub
       state: present
     when:
-      - ansible_facts['distribution'] == "KDE neon"
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       - vivaldi == "present"
 
-  - name: Add Apt Vivaldi Repository for KDE neon
+  - name: Add Apt Vivaldi Repository for KDE neon / Ubuntu
     become: yes
     apt_repository:
       repo: deb [arch=i386,amd64] http://repo.vivaldi.com/stable/deb/ stable main
@@ -84,7 +84,7 @@
       validate_certs: no
       filename: vivaldi
     when:
-      - ansible_facts['distribution'] == "KDE neon"
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       - vivaldi == "present"
 
 # Brave Browser - commented out for now, install is problematic
@@ -95,7 +95,7 @@
       #url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
       #state: present
     #when:
-      #- ansible_facts['distribution'] == "KDE neon"
+      #- ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       #- brave_browser == "present"
 
   #- name: Add Apt Brave Browser Repository for KDE neon
@@ -107,7 +107,7 @@
       #validate_certs: no
       #filename: brave
     #when:
-      #- ansible_facts['distribution'] == "KDE neon"
+      #- ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       #- brave_browser == "present"
 
   - name: Install Firefox
@@ -136,7 +136,7 @@
       state: "{{ opera }}"
     when: 
       - ansible_facts['distribution_file_variety'] == "SUSE"
-  - name: Install Opera Browser - KDE Neon
+  - name: Install Opera Browser - KDE Neon / Ubuntu
     become: yes
     ignore_errors: yes
     package:
@@ -156,11 +156,11 @@
     #package:
       #name: brave-browser
       #state: "{{ brave_browser }}"
-    #when: ansible_facts['distribution'] == "KDE neon"
+    #when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
   #- name: Install Brave Keyring
     #become: yes
     #ignore_errors: yes
     #package:
       #name: brave-keyring
       #state: "{{ brave_browser }}"
-    #when: ansible_facts['distribution'] == "KDE neon"
+    #when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )

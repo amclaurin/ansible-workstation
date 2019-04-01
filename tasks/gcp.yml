@@ -45,15 +45,15 @@
       #enabled: yes
     #when: (ansible_facts['os_family'] == "Suse" and google_cloud_sdk == "present")
     
-  - name: Add an Apt signing key for Google Cloud SDK, for KDE neon
+  - name: Add an Apt signing key for Google Cloud SDK, for KDE neon / Ubuntu
     become: yes
     apt_key:
       url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
       state: present
-    when: ansible_facts['distribution'] == "KDE neon"
+    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
 
 
-  - name: Add Apt Google Cloud SDK Repository for KDE neon
+  - name: Add Apt Google Cloud SDK Repository for KDE neon / Ubuntu
     become: yes
     apt_repository:
       repo: deb http://packages.cloud.google.com/apt cloud-sdk-bionic main
@@ -61,7 +61,7 @@
       update_cache: yes
       validate_certs: no
       filename: google-cloud-sdk
-    when: ansible_facts['distribution'] == "KDE neon"
+    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
 
 
   - name: Install Google Cloud SDK

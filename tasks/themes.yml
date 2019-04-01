@@ -1,0 +1,21 @@
+---
+
+  - name: Install Arc KDE Themes
+    block:
+      - get_url:
+          url: "{{ gh_url }}/{{ gh_repo }}/archive/master.tar.gz"
+          dest: "{{ user_home_directory }}/Downloads/arc_kde.tar.gz"
+          mode: 0440
+      - unarchive:
+          src: "{{ user_home_directory }}/Downloads/arc_kde.tar.gz"
+          dest: "{{ user_home_directory }}/Downloads/"
+    when: (arc_kde == "present")
+    
+  - name: Copy the Arc themes to the local user's home directory
+    copy:
+      src: "{{ user_home_directory }}/Downloads/arc-kde-master/{{item}}/"
+      dest: "{{ user_home_directory }}/.local/share/{{item}}/"
+      mode: 0774
+    with_items:
+      ['aurorae','color-schemes','konsole','konversation','Kvantum','plasma','wallpapers','yakuake']
+

@@ -1,0 +1,23 @@
+---
+
+  - name: Install Fedora 29 backgrounds
+    become: yes
+    package:
+      name: f29-backgrounds-kde
+      state: present
+    when: ( ansible_os_family == "Fedora" and f29_backgrounds_kde == "present" )
+    
+  - name: Install MacBuntu Wallpapers
+    block:
+      - get_url:
+          url: http://drive.noobslab.com/data/Mac/MacBuntu-Wallpapers.zip
+          dest: "{{ user_home_directory }}/Downloads/MacBuntu-Wallpapers.zip"
+          mode: 0440
+      - file:
+          path: "{{ user_home_directory }}/.local/share/wallpapers/"
+          state: directory
+          mode: 0755
+      - unarchive:
+          src: "{{ user_home_directory }}/Downloads/MacBuntu-Wallpapers.zip"
+          dest: "{{ user_home_directory }}/.local/share/wallpapers/"
+    when: ( macbuntu_wallpapers == "present")

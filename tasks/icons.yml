@@ -1,0 +1,26 @@
+---
+
+  - name: Install Antu icon set from git
+    git:
+      repo: https://git.opendesktop.org/fabianalexis/antu-icons
+      dest: "{{ user_home_directory }}/.local/share/icons/antu-icons"
+
+  - name: Install Papirus Icon Theme
+    block:
+      - get_url:
+          url: "{{ gh_url }}/{{ pa_gh_repo }}/archive/master.tar.gz"
+          dest: "{{ user_home_directory }}/Downloads/papirus.tar.gz"
+          mode: 0440
+      - unarchive:
+          src: "{{ user_home_directory }}/Downloads/papirus.tar.gz"
+          dest: "{{ user_home_directory }}/.local/share/icons/"
+    when: (papirus_icons == "present")
+    
+  #- name: Copy the Arc themes to the local user's home directory
+    #copy:
+      #src: "{{ user_home_directory }}/Downloads/papirus-icon-theme-master/{{item}}/"
+      #dest: "{{ user_home_directory }}/.local/share/icons/{{item}}/"#
+      #local_follow: False
+      #mode: 0774
+    #with_items:
+      #['Papirus','Papirus-Light','Papirus-Dark']

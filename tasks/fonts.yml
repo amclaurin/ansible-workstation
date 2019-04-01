@@ -1,55 +1,58 @@
 ---
 
-  #- name: Install xorg-x11-font-utils
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: font-util
-      #state: present
-  #- name: Install fontconfig
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: fontconfig
-      #state: present
-  #- name: install ubuntu utilities
-    #become: yes
-    #state: present
-    #ignore_errors: yes
-    #package:
-      #name:
-      #- libfreetype6
-      #- libfreetype6-dev
-      #- libfontconfig
-    #update_cache: yes
-    #when: ansible_facts['distribution'] == "KDE neon"
+  - name: Install xorg-x11-font-utils
+    become: yes
+    ignore_errors: yes
+    package:
+      name: font-util
+      state: present
+  - name: Install fontconfig
+    become: yes
+    ignore_errors: yes
+    package:
+      name: fontconfig
+      state: present
+  - name: install ubuntu utilities
+    become: yes
+    state: present
+    ignore_errors: yes
+    package:
+      name:
+      - libfreetype6
+      - libfreetype6-dev
+      - libfontconfig
+    update_cache: yes
+    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
     
     
-  #- name: Install Microsoft fonts
-    #become: yes
-    #dnf:
-      #name: https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
-      #state: "{{ ms_core_fonts }}"
-    #when: ansible_facts['os_family'] == "RedHat"
-  #- name: Install Microsoft fonts for Suse
-    #become: yes
-    #zypper:
-      #name: fetchmsttfonts
-      #state: "{{ ms_core_fonts }}"
-    #when: ansible_facts['distribution_file_variety'] == "SUSE"
-  #- name: Accept License for MS Core Fonts KDE Neon
-    #shell: 'echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections'
-    #when:
-      #- ansible_facts['distribution'] == "KDE neon"
-      #- ms_core_fonts == "present"
-  #- name: Install Microsoft fonts for KDE Neon
-    #become: yes
-    #package:
-      #name: ttf-mscorefonts-installer
-      #state: "{{ ms_core_fonts }}"
-    #when:
-      #- ansible_facts['distribution'] == "KDE neon"
-      #- ms_core_fonts == "present"
+  - name: Install Microsoft fonts
+    become: yes
+    dnf:
+      name: https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+      state: "{{ ms_core_fonts }}"
+    when: ansible_facts['os_family'] == "RedHat"
+    
+  - name: Install Microsoft fonts for Suse
+    become: yes
+    zypper:
+      name: fetchmsttfonts
+      state: "{{ ms_core_fonts }}"
+    when: ansible_facts['distribution_file_variety'] == "SUSE"
+    
+  - name: Accept License for MS Core Fonts KDE Neon / Ubuntu
+    shell: 'echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections'
+    when:
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ms_core_fonts == "present"
+      
+  - name: Install Microsoft fonts for KDE Neon / Ubuntu
+    become: yes
+    package:
+      name: ttf-mscorefonts-installer
+      state: "{{ ms_core_fonts }}"
+    when:
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ms_core_fonts == "present"
       
 #
 # Install Google Fonts
@@ -67,18 +70,16 @@
           url: https://github.com/google/fonts/archive/master.tar.gz
           dest: "{{ user_home_directory }}/Downloads/google-fonts/master.tar.gz"
           mode: 0440
-    #- name: Extract the downloaded fonts
+
       - unarchive:
           src: "{{ user_home_directory }}/Downloads/google-fonts/master.tar.gz"
           dest: "{{ user_home_directory }}/Downloads/google-fonts/"
-    #- name: Create the target directory for the fonts
 
       - file:
           path: /usr/share/fonts/truetype/google-fonts
           state: directory
           mode: 0755
         become: yes
-    #- name: Copy files from downloads to TTF font directory
 
       - copy: 
           src: "{{ user_home_directory }}/Downloads/google-fonts/fonts-master/apache/"
@@ -86,24 +87,23 @@
         become: yes
     when: google_fonts =="present"
 
-  #- name: Download Noobslab MacBuntu fonts
-    #block:
-      #- get_url:
-        #url: http://drive.noobslab.com/data/Mac/macfonts.zip
-        #dest: "{{ user_home_directory }}/Downloads/macfonts.zip"
-        #mode: 0440
-    ##- name: Create the target directory for the fonts
-      #become: yes
-      #file:
-        #path: /usr/share/fonts/truetype/macbuntu-fonts
-        #state: directory
-        #mode: 0755
-    ##- name: Extract the downloaded fonts
-      #become: yes
-      #unarchive:
-        #src: "{{ user_home_directory }}/Downloads/macfonts.zip"
-        #dest: /usr/share/fonts/truetype/macbuntu-fonts
-    #when: macbuntu_fonts == "present"
+  - name: Download Noobslab MacBuntu fonts
+    block:
+      - get_url:
+          url: http://drive.noobslab.com/data/Mac/macfonts.zip
+          dest: "{{ user_home_directory }}/Downloads/macfonts.zip"
+          mode: 0664
+        become: no
+      - file:
+          path: /usr/share/fonts/truetype/macbuntu-fonts
+          state: directory
+          mode: 0755
+        become: yes
+      - unarchive:
+          src: "{{ user_home_directory }}/Downloads/macfonts.zip"
+          dest: /usr/share/fonts/truetype/macbuntu-fonts
+        become: yes
+    when: macbuntu_fonts == "present"
     
     
     #- name: Install RHEL extra fonts
