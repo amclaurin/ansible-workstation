@@ -14,14 +14,13 @@
       state: present
   - name: install ubuntu utilities
     become: yes
-    state: present
     ignore_errors: yes
     package:
       name:
       - libfreetype6
       - libfreetype6-dev
       - libfontconfig
-    update_cache: yes
+      state: present
     when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
     
     

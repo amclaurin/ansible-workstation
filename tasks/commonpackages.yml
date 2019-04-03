@@ -16,6 +16,14 @@
       name: libselinux-python
       state: present
     when: ansible_facts['os_family'] == "RedHat"
+    
+  - name: Install python-xml for Suse - needed for some later stages to work on SuSE systems
+    become: yes
+    ignore_errors: yes
+    package:
+      name: python-xml
+      state: present
+    when: ansible_facts['distribution_file_variety'] == "SUSE"
       
   - name: Install Curl
     become: yes

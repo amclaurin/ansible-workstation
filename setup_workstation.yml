@@ -3,6 +3,8 @@
 
 # Note - If using Ansible < 2.4 installing the Pyrapus Icons will cause issues - see this bug report https://github.com/ansible/ansible/issues/23902
 
+# You will need to have Ansible > 2.4 and (on SuSE) python-xml installed before running the script.
+
 - name: Setup Workstation
   hosts: localhost
   gather_facts: true
@@ -18,38 +20,38 @@
     - name: Set package variables
       include_vars: vars/vars.yml
       
-    #- include_tasks: tasks/commonpackages.yml
+    # - include_tasks: tasks/commonpackages.yml
 
-    #- include_tasks: tasks/susekderepos.yml
-      #when: 
-        #- ansible_facts['distribution_file_variety'] == "SUSE"
-        #- ansible_facts['distribution'] != "openSUSE Tumbleweed"
-        #- update_kde == "yes"
+    - include_tasks: tasks/susekderepos.yml
+      when: 
+        - ansible_facts['distribution_file_variety'] == "SUSE"
+        - ansible_facts['distribution'] != "openSUSE Tumbleweed"
+        - update_kde == "yes"
 
-    #- include_tasks: tasks/browsers.yml
+    # - include_tasks: tasks/browsers.yml
     
-    #- include_tasks: tasks/fonts.yml
+    # - include_tasks: tasks/fonts.yml
     
-    #- include_tasks: tasks/editors.yml
+    # - include_tasks: tasks/editors.yml
 
-    #- include_tasks: tasks/aws.yml
-      #when: (awscli == "present" or boto == "present")
+    # - include_tasks: tasks/aws.yml
+    #   when: (awscli == "present" or boto == "present")
 
-    #- include_tasks: tasks/azure.yml
-      #when: (azure_cli == "present")
+    # - include_tasks: tasks/azure.yml
+    #   when: (azure_cli == "present")
 
-    #- include_tasks: tasks/gcp.yml
-      #when: (google_cloud_sdk == "present")
+    # - include_tasks: tasks/gcp.yml
+    #   when: (google_cloud_sdk == "present")
 
-    #- include_tasks: tasks/terraform.yml
-      #when: (terraform == "present")
+    # - include_tasks: tasks/terraform.yml
+    #   when: (terraform == "present")
 
-    #- include_tasks: tasks/networktools.yml
+    # - include_tasks: tasks/networktools.yml
     
 # KDE Themes, Icons and Decorations
 
 
-    #- include_tasks: tasks/wallpapers.yml
+    - include_tasks: tasks/wallpapers.yml
     
     #- include_tasks: tasks/icons.yml - This needs work
     

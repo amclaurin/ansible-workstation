@@ -16,11 +16,11 @@
     
 # Experiment to see if importing the RPMkey woorks for Suse
 
-  - name: Import the RPM key for the Zypper repository for Suse
-    rpm_key:
-      state: present
-      key: http://apt.sw.be/RPM-GPG-KEY.dag.txt
-    when: (ansible_facts['os_family'] == "Suse" and azure_cli == "present")
+  # - name: Import the RPM key for the Zypper repository for Suse
+  #   rpm_key:
+  #     state: present
+  #     key: http://apt.sw.be/RPM-GPG-KEY.dag.txt
+  #   when: (ansible_facts['os_family'] == "Suse" and azure_cli == "present")
 
   - name: Add Azure CLI Zypper Repository for Suse
     become: yes
@@ -28,7 +28,7 @@
       repo: https://packages.microsoft.com/yumrepos/azure-cli
       name: azure-cli
       description: Azure CLI
-      #disable_gpg_check: yes
+      disable_gpg_check: yes
       overwrite_multiple: yes
       runrefresh: yes
       state: present

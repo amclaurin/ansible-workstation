@@ -61,8 +61,14 @@
   - name: Add Vivaldi Zypper Repository for Suse
     become: yes
     zypper_repository:
-      repo: https://repo.vivaldi.com/archive/vivaldi-suse.repo
-    when: 
+      name: vivaldi
+      description: Vivaldi
+      repo: http://repo.vivaldi.com/archive/rpm/x86_64
+      # repo: https://repo.vivaldi.com/archive/vivaldi-suse.repo
+      disable_gpg_check: yes
+      state: present
+      runrefresh: yes
+    when:
       - ansible_facts['distribution_file_variety'] == "SUSE"
       - vivaldi == "present"
       

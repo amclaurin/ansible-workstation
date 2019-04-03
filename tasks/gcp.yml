@@ -10,9 +10,9 @@
     #rpm_key:
       #state: present
       #key: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-    #when: (ansible_facts['os_family'] == "RedHat" or ansible_facts['os_family'] == "Suse")
+    #when: (ansible_facts['os_family'] == "RedHat")
     
-  - name: Add Google Cloud SDK YUM Repository for Red Hat or Suse
+  - name: Add Google Cloud SDK YUM Repository for Red Hat
     yum_repository:
       name: google-cloud-sdk
       description: Google Cloud SDK
@@ -22,9 +22,9 @@
       gpgkey:
         https://packages.cloud.google.com/yum/doc/yum-key.gpg
         https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-    when: (ansible_facts['os_family'] == "RedHat" or ansible_facts['os_family'] == "Suse")
+    when: (ansible_facts['os_family'] == "RedHat")
     
-# Experiment to see if importing the RPMkey woorks for Suse
+# Experiment to see if importing the RPMkey woorks for Suse (not yet)
 
   #- name: Import the RPM key for the Zypper repository
     #rpm_key:
@@ -32,18 +32,18 @@
       #key: http://apt.sw.be/RPM-GPG-KEY.dag.txt
     #when: (ansible_facts['os_family'] == "Suse" and google_cloud_sdk == "present")
 
-  #- name: Add Azure CLI Zypper Repository for Suse
-    #become: yes
-    #zypper_repository:
-      #repo: https://packages.microsoft.com/yumrepos/google-cloud-sdk
-      #name: google-cloud-sdk
-      #description: Azure CLI
-      ##disable_gpg_check: yes
-      #overwrite_multiple: yes
-      #runrefresh: yes
-      #state: present
-      #enabled: yes
-    #when: (ansible_facts['os_family'] == "Suse" and google_cloud_sdk == "present")
+  - name: Add Google CLI Zypper Repository for Suse
+    become: yes
+    zypper_repository:
+      repo: https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64
+      name: google-cloud-sdk
+      description: Google Cloud SDK
+      disable_gpg_check: yes
+      overwrite_multiple: yes
+      runrefresh: yes
+      state: present
+      enabled: yes
+    when: (ansible_facts['os_family'] == "Suse" and google_cloud_sdk == "present")
     
   - name: Add an Apt signing key for Google Cloud SDK, for KDE neon / Ubuntu
     become: yes
