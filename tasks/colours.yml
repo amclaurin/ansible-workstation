@@ -1,0 +1,9 @@
+# ---
+
+#   - name: Install KDE Colour Schemes - Glacier
+#     get_url:
+#       url: "https://store.kde.org/p/1001803/startdownload?file_id=1460738974&file_name=79052-Glacier.colors&file_type=text/plain&file_size=2299"
+#       dest: "{{ user_home_directory }}/.local/share/color-schemes/79052-Glacier.colors"
+#       mode: 0644
+
+
