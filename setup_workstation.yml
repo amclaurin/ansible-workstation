@@ -56,7 +56,6 @@
     #- include_tasks: tasks/icons.yml - This needs work
     
     - include_tasks: tasks/themes.yml
-    
 
     #- include_tasks: tasks/firefoxextensions.yml
     #- include_tasks: tasks/main.yml
