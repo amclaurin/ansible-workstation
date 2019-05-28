@@ -13,6 +13,7 @@
     #when: (ansible_facts['os_family'] == "RedHat")
     
   - name: Add Google Cloud SDK YUM Repository for Red Hat
+    become: yes
     yum_repository:
       name: google-cloud-sdk
       description: Google Cloud SDK

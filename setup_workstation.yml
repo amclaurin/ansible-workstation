@@ -10,7 +10,8 @@
   gather_facts: true
   vars:
     ansible_connection: local
-    ansible_python_interpreter: /usr/bin/python
+#    ansible_python_interpreter: /usr/bin/python
+    ansible_python_interpreter: /usr/bin/python3
     user_home_directory: /home/alistair
     fastmirror: present
     distributionpath: "tasks/{{ distribution_file_variety }}/{{ distribution }}"

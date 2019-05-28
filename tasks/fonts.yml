@@ -12,6 +12,12 @@
     package:
       name: fontconfig
       state: present
+  - name: Install cabextract
+    become: yes
+    ignore_errors: yes
+    package:
+      name: cabextract
+      state: present
   - name: install ubuntu utilities
     become: yes
     ignore_errors: yes

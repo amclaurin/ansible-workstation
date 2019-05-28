@@ -1,6 +1,7 @@
 
 
     - name: Add VS Code YUM Repository for RHEL / Fedora
+      become: yes
       yum_repository:
         name: vscode
         description: Visual Studio Code
@@ -50,6 +51,7 @@
         state: "{{ vs_code }}"
 
     - name: Add Atom YUM Repository for RHEL / Fedora
+      become: yes
       vars:
         rpmurl: "https://packagecloud.io/AtomEditor/atom/el/7/x86_64"
       yum_repository:

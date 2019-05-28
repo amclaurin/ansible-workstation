@@ -16,7 +16,14 @@
           dest: "{{ user_home_directory }}/Downloads/"
     when: (papirus_icons == "present")
 
-    
+  - name: Create a directory if it does not exist
+    file:
+      path: "{{ user_home_directory }}/.local/share/icons/{{item}}/"
+      state: directory
+      mode: '0755'
+    with_items:
+      ['Papirus','Papirus-Light','Papirus-Dark']
+
   - name: Copy the Papirus themes to the local user's home directory
     synchronize:
       src: "{{ user_home_directory }}/Downloads/papirus-icon-theme-master/{{item}}/"
