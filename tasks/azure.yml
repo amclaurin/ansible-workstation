@@ -11,7 +11,7 @@
     yum_repository:
       name: azure-cli
       description: Azure CLI
-      baseurl: https://packages.microsoft.com/keys/microsoft.asc
+      baseurl: https://packages.microsoft.com/yumrepos/azure-cli
       gpgcheck: no
     when: (ansible_facts['os_family'] == "RedHat" and azure_cli == "present")
     
