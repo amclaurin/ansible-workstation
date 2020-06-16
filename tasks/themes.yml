@@ -18,4 +18,21 @@
       mode: 0774
     with_items:
       ['aurorae','color-schemes','konsole','konversation','Kvantum','plasma','wallpapers','yakuake']
-
+      
+  - name: Install Fedora ARC KDE Packages
+    become: yes
+    ignore_errors: yes
+    package:
+      name: arc-kde
+    when:
+      - (arc_kde == "present")
+      - ansible_facts['os_family'] == "RedHat"
+      
+  - name: Install Fedora Breeze GTK Theme (included in Kubuntu)
+    become: yes
+    ignore_errors: yes
+    package:
+      name: breeze-gtk
+    when: ansible_facts['os_family'] == "RedHat"
+    
+    
