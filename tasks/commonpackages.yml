@@ -61,6 +61,13 @@
       name: latte-dock
       state: "present"
       
+  - name: Install Tilix
+    become: yes
+    ignore_errors: yes
+    package:
+      name: tilix
+      state: "present"
+      
 # The following are needed for Microsoft packages on Ubuntu / apt based systems, I've chosen to install them as core packages.
     
   - name: Install KDE Neon / Ubuntu Core Packages
