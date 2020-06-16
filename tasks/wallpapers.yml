@@ -1,11 +1,11 @@
 ---
 
-  - name: Install Fedora 29 backgrounds
+  - name: Install Fedora 32 backgrounds
     become: yes
     package:
-      name: f29-backgrounds-kde
+      name: f32-backgrounds-extras-kde
       state: present
-    when: ( ansible_os_family == "Fedora" and f29_backgrounds_kde == "present" )
+    when: ( ansible_facts['distribution'] == "Fedora" and f32_backgrounds_kde == "present" )
     
   - name: Install MacBuntu Wallpapers
     block:

@@ -54,6 +54,13 @@
       name: python-pip
       state: "present"
       
+  - name: Install Latte Dock
+    become: yes
+    ignore_errors: yes
+    package:
+      name: latte-dock
+      state: "present"
+      
 # The following are needed for Microsoft packages on Ubuntu / apt based systems, I've chosen to install them as core packages.
     
   - name: Install KDE Neon / Ubuntu Core Packages

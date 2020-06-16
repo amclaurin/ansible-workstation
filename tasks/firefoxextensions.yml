@@ -1,5 +1,7 @@
 ---
 
+# This may no longer work, needs investigation
+
   - name: Install Mozilla Containers Extension
     shell: "./tasks/mozilla-extensions-manager.sh --update --firefox --user https://addons.mozilla.org/firefox/downloads/file/872067/firefox_multi_account_containers-6.0.0-an+fx-linux.xpi"
   - name: Install Mozilla Ghostery Ad Blocker Extension

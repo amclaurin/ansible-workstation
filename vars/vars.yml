@@ -113,7 +113,7 @@ google_cloud_sdk: present
 # Terrraform, choose correct version from https://releases.hashicorp.com/terraform/
 
 terraform: present
-tf_version: "0.11.13"
+tf_version: "0.12.26"
 
 # Only edit the below if the terraform download breaks
 
@@ -134,7 +134,7 @@ macbuntu_wallpapers: present
 
 # Fedora additional wallpapers, for Fedora Only
 
-f29_backgrounds_kde: present
+f32_backgrounds_kde: present
 
 # Install Antu Icons
 

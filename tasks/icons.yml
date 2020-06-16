@@ -1,33 +1,38 @@
 ---
 
-  # - name: Install Antu icon set from git
-  #   git:
-  #     repo: https://git.opendesktop.org/fabianalexis/antu-icons
-  #     dest: "{{ user_home_directory }}/.local/share/icons/antu-icons"
+  #- name: Install Antu icon set from git
+    #git:
+      #repo: https://git.opendesktop.org/fabianalexis/antu-icons
+      #dest: "{{ user_home_directory }}/.local/share/icons/antu-icons"
+      
+  - name: Install Mojave-CT icon set from git
+    git:
+      repo: https://github.com/zayronxio/Mojave-CT
+      dest: "{{ user_home_directory }}/.local/share/icons/Mojave-CT"
 
-  - name: Install Papirus Icon Theme
-    block:
-      - get_url:
-          url: "{{ gh_url }}/{{ pa_gh_repo }}/archive/master.tar.gz"
-          dest: "{{ user_home_directory }}/Downloads/papirus.tar.gz"
-          mode: 0440
-      - unarchive:
-          src: "{{ user_home_directory }}/Downloads/papirus.tar.gz"
-          dest: "{{ user_home_directory }}/Downloads/"
-    when: (papirus_icons == "present")
+  #- name: Install Papirus Icon Theme
+    #block:
+      #- get_url:
+          #url: "{{ gh_url }}/{{ pa_gh_repo }}/archive/master.tar.gz"
+          #dest: "{{ user_home_directory }}/Downloads/papirus.tar.gz"
+          #mode: 0440
+      #- unarchive:
+          #src: "{{ user_home_directory }}/Downloads/papirus.tar.gz"
+          #dest: "{{ user_home_directory }}/Downloads/"
+    #when: (papirus_icons == "present")
 
-  - name: Create a directory if it does not exist
-    file:
-      path: "{{ user_home_directory }}/.local/share/icons/{{item}}/"
-      state: directory
-      mode: '0755'
-    with_items:
-      ['Papirus','Papirus-Light','Papirus-Dark']
+  #- name: Create a directory if it does not exist
+    #file:
+      #path: "{{ user_home_directory }}/.local/share/icons/{{item}}/"
+      #state: directory
+      #mode: '0755'
+    #with_items:
+      #['Papirus','Papirus-Light','Papirus-Dark']
 
-  - name: Copy the Papirus themes to the local user's home directory
-    synchronize:
-      src: "{{ user_home_directory }}/Downloads/papirus-icon-theme-master/{{item}}/"
-      dest: "{{ user_home_directory }}/.local/share/icons/{{item}}/"
-      # delegate_to: localhost
-    with_items:
-      ['Papirus','Papirus-Light','Papirus-Dark']
+  #- name: Copy the Papirus themes to the local user's home directory
+    #synchronize:
+      #src: "{{ user_home_directory }}/Downloads/papirus-icon-theme-master/{{item}}/"
+      #dest: "{{ user_home_directory }}/.local/share/icons/{{item}}/"
+      #delegate_to: localhost
+    #with_items:
+      #['Papirus','Papirus-Light','Papirus-Dark']

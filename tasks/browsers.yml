@@ -55,6 +55,20 @@
     when:
       - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       - opera == "present"
+      
+  - name: Add yum Opera Repository for Fedora
+    become: yes
+    yum_repository:
+      name: Opera
+      description: Opera Packages
+      baseurl: https://rpm.opera.com/rpm
+      state: present
+      gpgcheck: no
+    when:
+      - ansible_facts['os_family'] == "RedHat"
+      - opera == "present"
+      
+
 
 # Vivaldi
 
@@ -92,6 +106,34 @@
     when:
       - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       - vivaldi == "present"
+      
+  - name: Install yum utils for Fedora / RHEL
+    become: yes
+    ignore_errors: yes
+    package:
+      name: yum-utils
+      name: dnf-plugins-core
+      state: present
+    when:
+      - ansible_facts['os_family'] == "RedHat"
+      
+  - name: Add yum Vivaldi Repository for Fedora
+    become: yes
+    shell: yum-config-manager --add-repo=https://repo.vivaldi.com/archive/vivaldi-fedora.repo
+    args:
+      creates: /etc/yum.repos.d/vi.repo
+    when:
+      - ansible_facts['os_family'] == "RedHat"
+      - vivaldi == "present"
+    
+  - name: Add yum Brave Repository for Fedora
+    become: yes
+    shell: dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+    shell: rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+    when:
+      - ansible_facts['os_family'] == "RedHat"
+      - brave_browser == "present"
+      
 
 # Brave Browser - commented out for now, install is problematic
 
@@ -123,7 +165,7 @@
       name: firefox
       state: present
   - name: Install Falkon
-    become: yes
+    become: 
     ignore_errors: yes
     package:
       name: falkon
@@ -134,34 +176,35 @@
     package:
       name: chromium
       state: "{{ chromium }}"
-  - name: Install Opera Browser - Suse
-    become: yes
-    ignore_errors: yes
-    package:
-      name: opera
-      state: "{{ opera }}"
-    when: 
-      - ansible_facts['distribution_file_variety'] == "SUSE"
-  - name: Install Opera Browser - KDE Neon / Ubuntu
+  - name: Install Opera Browser - SuSE / RHEL / Fedora
     become: yes
     ignore_errors: yes
     package:
       name: opera-stable
       state: "{{ opera }}"
     when: 
+      - ( ansible_facts['distribution_file_variety'] == "SUSE" or ansible_facts['os_family'] == "RedHat" )
+  - name: Install Opera Browser - KDE Neon / Ubuntu
+    become: yes
+    ignore_errors: yes
+    package:
+      name: opera
+      state: "{{ opera }}"
+    when: 
       - ansible_facts['distribution_file_variety'] != "SUSE"
+      - ansible_facts['os_family'] != "RedHat"
   - name: Install Vivaldi Browser
     become: yes
     ignore_errors: yes
     package:
       name: vivaldi-stable
       state: "{{ vivaldi }}"
-  #- name: Install Brave Browser
-    #become: yes
-    #ignore_errors: yes
-    #package:
-      #name: brave-browser
-      #state: "{{ brave_browser }}"
+  - name: Install Brave Browser
+    become: yes
+    ignore_errors: yes
+    package:
+      name: brave-browser
+      state: "{{ brave_browser }}"
     #when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
   #- name: Install Brave Keyring
     #become: yes

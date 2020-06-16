@@ -49,7 +49,7 @@
 
     - include_tasks: tasks/networktools.yml
     
-# KDE Themes, Icons and Decorations
+#KDE Themes, Icons and Decorations
 
 
     - include_tasks: tasks/wallpapers.yml
@@ -59,6 +59,9 @@
     - include_tasks: tasks/themes.yml
 
     - include_tasks: tasks/firefoxextensions.yml
+    
+# Only needed for building Linux from Scratch    
+    
     #- include_tasks: tasks/main.yml
     #- include_tasks: tasks/LFSrequired.yml
     
