@@ -15,6 +15,14 @@
       src: "{{ user_home_directory }}/Downloads/{{ tf_filename }}"
       dest: "{{ user_home_directory }}/.local/bin"
       mode: 0555
+      
+  - name: update profile
+    lineinfile:
+      dest: "{{ user_home_directory }}/.bashrc"
+      regexp: 'PATH=$PATH:$HOME/.local/bin'
+      state: present
+      insertafter: EOF
+      line: 'PATH=$PATH:$HOME/.local/bin'
 
 # Note you can discover the current version of Terraform with the following command
 #

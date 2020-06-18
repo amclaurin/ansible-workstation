@@ -107,16 +107,6 @@
       - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
       - vivaldi == "present"
       
-  - name: Install yum utils for Fedora / RHEL
-    become: yes
-    ignore_errors: yes
-    package:
-      name: yum-utils
-      name: dnf-plugins-core
-      state: present
-    when:
-      - ansible_facts['os_family'] == "RedHat"
-      
   - name: Add yum Vivaldi Repository for Fedora
     become: yes
     shell: yum-config-manager --add-repo=https://repo.vivaldi.com/archive/vivaldi-fedora.repo
@@ -133,6 +123,14 @@
     when:
       - ansible_facts['os_family'] == "RedHat"
       - brave_browser == "present"
+      
+  #- name: Add yum Brave Repository for Ubuntu
+    #become: yes
+    #shell: dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+    #shell: rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+    #when:
+      #- ansible_facts['os_family'] == "Ubuntu"
+      #- brave_browser == "present"
       
 
 # Brave Browser - commented out for now, install is problematic
@@ -164,18 +162,30 @@
     package:
       name: firefox
       state: present
+      
   - name: Install Falkon
-    become: 
+    become: yes
     ignore_errors: yes
     package:
       name: falkon
       state: "{{ falkon }}"
+      
   - name: Install Chromium
     become: yes
     ignore_errors: yes
     package:
       name: chromium
       state: "{{ chromium }}"
+    when: ansible_facts['distribution'] != "Ubuntu"
+    
+  - name: Install Chromium
+    become: yes
+    ignore_errors: yes
+    package:
+      name: chromium-browser
+      state: "{{ chromium }}"
+    when: ansible_facts['distribution'] == "Ubuntu"
+
   - name: Install Opera Browser - SuSE / RHEL / Fedora
     become: yes
     ignore_errors: yes
@@ -188,7 +198,7 @@
     become: yes
     ignore_errors: yes
     package:
-      name: opera
+      name: opera-stable
       state: "{{ opera }}"
     when: 
       - ansible_facts['distribution_file_variety'] != "SUSE"

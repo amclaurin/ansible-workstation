@@ -8,6 +8,8 @@
     package:
       name: yum-fastestmirror
       state: present
+    when: ansible_facts['os_family'] != "Debian"
+    
       
   - name: Install Python bindings for SELinux - needed for some later stages to work on Red Hat systems
     become: yes
@@ -53,6 +55,15 @@
     package:
       name: python-pip
       state: "present"
+    when: ansible_facts['os_family'] != "Debian"
+      
+  - name: Install Python PIP
+    become: yes
+    ignore_errors: yes
+    package:
+      name: python3-pip
+      state: "present"
+    when: ansible_facts['os_family'] == "Debian"
       
   - name: Install Latte Dock
     become: yes
@@ -68,6 +79,16 @@
       name: tilix
       state: "present"
       
+  - name: Install yum utils for Fedora / RHEL
+    become: yes
+    ignore_errors: yes
+    package:
+      name: yum-utils
+      name: dnf-plugins-core
+      state: present
+    when:
+      - ansible_facts['os_family'] == "RedHat"
+      
 # The following are needed for Microsoft packages on Ubuntu / apt based systems, I've chosen to install them as core packages.
     
   - name: Install KDE Neon / Ubuntu Core Packages
@@ -79,4 +100,4 @@
       - apt-transport-https
       - gpg
       state: "present"
-    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+    when: ansible_facts['os_family'] == "Debian"

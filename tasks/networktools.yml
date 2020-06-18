@@ -1,7 +1,15 @@
 ---
 
-    - name: Install sshuttle via PIP for easy ssh tunnelling
-      pip:
+    #- name: Install sshuttle via PIP for easy ssh tunnelling
+      #pip:
+        #name: sshuttle
+        #extra_args: --user
+      #when: sshuttle == "present"
+
+    - name: Install sshuttle
+      become: yes
+      ignore_errors: yes
+      package:
         name: sshuttle
-        extra_args: --user
+        state: "present"
       when: sshuttle == "present"
