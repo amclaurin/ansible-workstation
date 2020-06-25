@@ -1,7 +1,7 @@
 # ansible-workstation
 Ansible files for building a Linux Developer Workstation with Cloud Tools
 
-This is n Ansible build script to run on Fedora, Ubuntu / KUbuntu or Open SuSE to upgrade the KDE Desktop to a useful developer workstation with a good set of base Linux tools, Cloud Management Tools for the 3 major clouds, a clean apprearance for the KDE desktop and a selection of Browsers and Editors
+This is an Ansible build script to run on Fedora, Ubuntu / KUbuntu or Open SuSE to upgrade the KDE Desktop to a useful developer workstation with a good set of base Linux tools, Cloud Management Tools for the 3 major clouds, a clean apprearance for the KDE desktop and a selection of Browsers and Editors
 
 Each of the following options is customisable
 
@@ -31,6 +31,6 @@ TBD - Adds a simple text file to the desktop with hints as to quick configuratio
 
 Once you have downloaded these scripts, all you have to do is install ansible, run the setup-workstation scripts, make some quick config changes and you will have a professional Linux desktop very suited for Cloud development
 
-This is really a hobby project for me, in part to learn ansible, so please feel free to branch, mdify or send comments
+This is really a hobby project for me, in part to learn ansible, so please feel free to branch, modify or send comments
 
 
