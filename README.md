@@ -9,7 +9,7 @@ Install a standard set of Linux utils to ensure each distribution has the usual 
 
 Install Browsers from a choice of Firefox / Falkon, Opera, Chromium, Vivaldi and Brave. The script configures the repos for each of these.
 
-Install editors from Kate / VS Code and Aton, again installing the repos needed.
+Install editors from Kate / VS Code and Atom, again installing the repos needed.
 
 Installs the AWS, Azure or GCP commad line tools as needed.
 
@@ -27,7 +27,7 @@ Experimentally adds some Firefox extensions, broken at present.
 
 Optionally adds all the tools required for Linux from Scratch, useful tools if you want to do any low level Linux work.
 
-TBD - Adds a simple text file to the desktop with hints as to quick configuration of the KDE settings, as I haven't wored out how to modify all the KDE conf files and it's 2 minutes work.
+TBD - Adds a simple text file to the desktop with hints as to quick configuration of the KDE settings, as I haven't worked out how to modify all the KDE conf files and it's 2 minutes work.
 
 Once you have downloaded these scripts, all you have to do is install ansible, run the setup-workstation scripts, make some quick config changes and you will have a professional Linux desktop very suited for Cloud development
 
