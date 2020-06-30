@@ -20,68 +20,69 @@
     - debug: var=ansible_facts
     - name: Set package variables
       include_vars: vars/vars.yml
-      
-    - include_tasks: tasks/commonpackages.yml
+
+    # - include_tasks: tasks/commonpackages.yml
 
     - include_tasks: tasks/susekderepos.yml
-      when: 
+      when:
         - ansible_facts['distribution_file_variety'] == "SUSE"
         - ansible_facts['distribution'] != "openSUSE Tumbleweed"
         - update_kde == "yes"
 
-    - include_tasks: tasks/browsers.yml
-    
-    - include_tasks: tasks/fonts.yml
-      when: ansible_facts['os_family'] == "RedHat"
-    
-    - include_tasks: tasks/editors.yml
+    # - include_tasks: tasks/browsers.yml
 
-    - include_tasks: tasks/aws.yml
-      when: (awscli == "present" or boto == "present")
+    # - include_tasks: tasks/fonts.yml
+    #   when: ansible_facts['os_family'] == "RedHat"
+    #
+    # - include_tasks: tasks/editors.yml
+    #
+    # - include_tasks: tasks/aws.yml
+    #   when: (awscli == "present" or boto == "present")
+    #
+    # - include_tasks: tasks/azure.yml
+    #   when: (azure_cli == "present")
+    #
+    # - include_tasks: tasks/gcp.yml
+    #   when: (google_cloud_sdk == "present")
+    #
+    # - include_tasks: tasks/terraform.yml
+    #   when: (terraform == "present")
+    #
+    # - include_tasks: tasks/networktools.yml
 
-    - include_tasks: tasks/azure.yml
-      when: (azure_cli == "present")
-
-    - include_tasks: tasks/gcp.yml
-      when: (google_cloud_sdk == "present")
-
-    - include_tasks: tasks/terraform.yml
-      when: (terraform == "present")
-
-    - include_tasks: tasks/networktools.yml
-    
-#KDE Themes, Icons and Decorations
+#KDE Themes, Icons, Decorations and colours
 
 
-    - include_tasks: tasks/wallpapers.yml
-    
-    - include_tasks: tasks/icons.yml
-    
-    - include_tasks: tasks/themes.yml
+    # - include_tasks: tasks/wallpapers.yml
+    #
+    # - include_tasks: tasks/icons.yml
+    #
+    # - include_tasks: tasks/themes.yml
+    - include_tasks: tasks/colors.yml
 
     #- include_tasks: tasks/firefoxextensions.yml
-    
-# Only needed for building Linux from Scratch    
-    
+
+# Only needed for building Linux from Scratch
+
     #- include_tasks: tasks/main.yml
     #- include_tasks: tasks/LFSrequired.yml
-    
+
   handlers:
     #- include_tasks: handlers/main.yml
-    
-    
+
+
     #Old stuff
-    
+
         #- include_tasks: tasks/fedorarepos.yml
       #when: ansible_os_family == "RedHat"
     #- include_tasks: tasks/suserepos.yml
       #when: ansible_os_family == "Suse"
     #- include_tasks: tasks/suseleap15nonossrepos.yml
-      #when: 
+      #when:
         #- ansible_facts['distribution_file_variety'] == "SUSE"
         #- ansible_facts['distribution'] != "openSUSE Tumbleweed"
     #- include_tasks: tasks/susekderepos.yml
-      #when: 
+      #when:
         #- ansible_facts['distribution_file_variety'] == "SUSE"
         #- ansible_facts['distribution'] != "openSUSE Tumbleweed"
         #- updatekde == yes

@@ -1,0 +1,9 @@
+---
+
+  - name: Copy the color themes to the local user's home directory
+    copy:
+      src: "files/{{item}}"
+      dest: "{{ user_home_directory }}/.local/share/color-schemes/{{item}}"
+      mode: 0664
+    with_items:
+      ['PenguinV2.colors','Wholenewblue.colors']

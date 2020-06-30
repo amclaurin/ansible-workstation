@@ -1,4 +1,10 @@
 
+    - name: Install Kate Editor
+      become: yes
+      ignore_errors: yes
+      package:
+        name: kate
+        state: "{{ kate }}"
 
     - name: Add VS Code YUM Repository for RHEL / Fedora
       become: yes
@@ -21,7 +27,7 @@
         state: present
         enabled: yes
       when: (ansible_facts['os_family'] == "Suse" and vs_code == "present")
-      
+
     - name: Add an Apt signing key for VS Code, for KDE neon / Ubuntu
       become: yes
       apt_key:
@@ -75,7 +81,7 @@
         state: present
         enabled: yes
       when: (ansible_facts['os_family'] == "Suse" and atom == "present")
-      
+
     - name: Add an Apt signing key for Atom, for KDE neon / Ubuntu
       become: yes
       apt_key:
