@@ -34,7 +34,7 @@
         url: https://packages.microsoft.com/keys/microsoft.asc
         state: present
       when:
-        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
         - vs_code == "present"
 
     - name: Add Apt VS Code Repository for KDE neon / Ubuntu
@@ -46,7 +46,7 @@
         validate_certs: no
         filename: vscode
       when:
-        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
         - vs_code == "present"
 
     - name: Install Microsoft VS Code
@@ -88,7 +88,7 @@
         url: https://packagecloud.io/AtomEditor/atom/gpgkey
         state: present
       when:
-        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
         - atom == "present"
 
     - name: Add Apt Atom Repository for KDE neon / Ubuntu
@@ -100,7 +100,7 @@
         validate_certs: no
         filename: atom
       when:
-        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+        - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
         - atom == "present"
 
     - name: Install Atom Editor

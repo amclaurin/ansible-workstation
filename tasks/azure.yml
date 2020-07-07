@@ -42,7 +42,7 @@
       url: https://packages.microsoft.com/keys/microsoft.asc
       state: present
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
       - azure_cli == "present"
 
   - name: Add Apt Azure CLI Repository for KDE neon / Ubuntu
@@ -54,7 +54,7 @@
       validate_certs: no
       filename: azure-cli
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
       - azure_cli == "present"
 
   - name: Install Azure CLI

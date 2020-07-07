@@ -41,7 +41,7 @@
       url: https://deb.opera.com/archive.key
       state: present
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
       - opera == "present"
 
   - name: Add Apt Opera Repository for KDE neon / Ubuntu
@@ -53,7 +53,7 @@
       validate_certs: no
       filename: opera-stable
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu"  or ansible_facts['distribution'] == "Debian"  )
       - opera == "present"
 
   - name: Add yum Opera Repository for Fedora
@@ -92,7 +92,7 @@
       url: http://repo.vivaldi.com/stable/linux_signing_key.pub
       state: present
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu"  or ansible_facts['distribution'] == "Debian"  )
       - vivaldi == "present"
 
   - name: Add Apt Vivaldi Repository for KDE neon / Ubuntu
@@ -104,7 +104,7 @@
       validate_certs: no
       filename: vivaldi
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu"  or ansible_facts['distribution'] == "Debian"  )
       - vivaldi == "present"
 
   - name: Add yum Vivaldi Repository for Fedora
@@ -130,7 +130,7 @@
       url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
       state: present
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu"  or ansible_facts['distribution'] == "Debian"  )
       - brave_browser == "present"
 
   - name: Add Apt Brave Repository for KDE neon / Ubuntu
@@ -142,7 +142,7 @@
       validate_certs: no
       filename: brave
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu"  or ansible_facts['distribution'] == "Debian"  )
       - brave_browser == "present"
 
 
@@ -169,6 +169,7 @@
     when:
       - ansible_facts['distribution'] != "Ubuntu"
       - ansible_facts['distribution'] != "KDE neon"
+      - ansible_facts['distribution'] != "KDE neon"
 
   - name: Install Chromium
     become: yes
@@ -176,7 +177,7 @@
     package:
       name: chromium-browser
       state: "{{ chromium }}"
-    when: ( ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "KDE neon" )
+    when: ( ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Debian"  )
 
   - name: Install Opera Browser - SuSE / RHEL / Fedora
     become: yes

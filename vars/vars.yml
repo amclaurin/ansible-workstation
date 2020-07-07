@@ -117,7 +117,7 @@ google_cloud_sdk: present
 # Terrraform, choose correct version from https://releases.hashicorp.com/terraform/
 
 terraform: present
-tf_version: "0.12.26"
+tf_version: "0.12.28"
 
 # Only edit the below if the terraform download breaks
 

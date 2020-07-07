@@ -27,7 +27,7 @@
       - libfreetype6-dev
       - libfontconfig
       state: present
-    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
     
     
   - name: Install Microsoft fonts
@@ -47,7 +47,7 @@
   - name: Accept License for MS Core Fonts KDE Neon / Ubuntu
     shell: 'echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections'
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
       - ms_core_fonts == "present"
       
   - name: Install Microsoft fonts for KDE Neon / Ubuntu
@@ -56,7 +56,7 @@
       name: ttf-mscorefonts-installer
       state: "{{ ms_core_fonts }}"
     when:
-      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+      - ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
       - ms_core_fonts == "present"
       
 #

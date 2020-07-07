@@ -51,7 +51,7 @@
     apt_key:
       url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
       state: present
-    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
 
 
   - name: Add Apt Google Cloud SDK Repository for KDE neon / Ubuntu
@@ -62,7 +62,7 @@
       update_cache: yes
       validate_certs: no
       filename: google-cloud-sdk
-    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" )
+    when: ( ansible_facts['distribution'] == "KDE neon" or ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "Debian"  )
 
 
   - name: Install Google Cloud SDK
