@@ -1,0 +1,560 @@
+
+PLAY [Setup Workstation] *******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [debug] *******************************************************************
+ok: [localhost] => {
+    "ansible_facts": {
+        "all_ipv4_addresses": [
+            "10.211.55.11"
+        ],
+        "all_ipv6_addresses": [
+            "fdb2:2c26:f4e4:0:21c:42ff:fee1:de30",
+            "fe80::21c:42ff:fee1:de30"
+        ],
+        "ansible_local": {},
+        "apparmor": {
+            "status": "disabled"
+        },
+        "architecture": "aarch64",
+        "bios_date": "Wed, 16 Mar 2022 19:38:11",
+        "bios_vendor": "Parallels International GmbH.",
+        "bios_version": "17.1.2 (51548)",
+        "board_asset_tag": "None",
+        "board_name": "Parallels ARM Virtual Platform",
+        "board_serial": "None",
+        "board_vendor": "Parallels ARM Virtual Machine",
+        "board_version": "0.1",
+        "chassis_asset_tag": "NA",
+        "chassis_serial": "NA",
+        "chassis_vendor": "Parallels International GmbH.",
+        "chassis_version": "NA",
+        "cmdline": {
+            "BOOT_IMAGE": "/Image.gz",
+            "root": "PARTUUID=8fb447e6-effc-4028-9efb-240a0eb84fb2",
+            "rootflags": "rw,noatime",
+            "rootfstype": "ext4",
+            "rw": true
+        },
+        "date_time": {
+            "date": "2022-04-27",
+            "day": "27",
+            "epoch": "1651098983",
+            "epoch_int": "1651098983",
+            "hour": "22",
+            "iso8601": "2022-04-27T22:36:23Z",
+            "iso8601_basic": "20220427T223623104622",
+            "iso8601_basic_short": "20220427T223623",
+            "iso8601_micro": "2022-04-27T22:36:23.104622Z",
+            "minute": "36",
+            "month": "04",
+            "second": "23",
+            "time": "22:36:23",
+            "tz": "UTC",
+            "tz_dst": "UTC",
+            "tz_offset": "+0000",
+            "weekday": "Wednesday",
+            "weekday_number": "3",
+            "weeknumber": "17",
+            "year": "2022"
+        },
+        "default_ipv4": {
+            "address": "10.211.55.11",
+            "alias": "enp0s5",
+            "broadcast": "10.211.55.255",
+            "gateway": "10.211.55.1",
+            "interface": "enp0s5",
+            "macaddress": "00:1c:42:e1:de:30",
+            "mtu": 1500,
+            "netmask": "255.255.255.0",
+            "network": "10.211.55.0",
+            "type": "ether"
+        },
+        "default_ipv6": {},
+        "device_links": {
+            "ids": {
+                "sda": [
+                    "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ"
+                ],
+                "sda1": [
+                    "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part1"
+                ],
+                "sda2": [
+                    "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part2"
+                ],
+                "sda3": [
+                    "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part3"
+                ],
+                "sda4": [
+                    "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part4"
+                ],
+                "sda5": [
+                    "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part5"
+                ],
+                "sr0": [
+                    "ata-Virtual_DVD-ROM__1__-_31415B265"
+                ]
+            },
+            "labels": {
+                "sda2": [
+                    "EFISYS"
+                ],
+                "sda3": [
+                    "SWAP_ARCH"
+                ],
+                "sda4": [
+                    "ROOT_ARCH"
+                ],
+                "sda5": [
+                    "HOME_ARCH"
+                ],
+                "sr0": [
+                    "ISOIMAGE"
+                ]
+            },
+            "masters": {},
+            "uuids": {
+                "sda2": [
+                    "8ACC-236E"
+                ],
+                "sda3": [
+                    "9a1e76d8-6c56-4fa4-b65c-3db044184b91"
+                ],
+                "sda4": [
+                    "f1d649ae-2ca6-4fe9-813d-436568de4e8c"
+                ],
+                "sda5": [
+                    "7d9ba8f0-5ec7-4105-a540-a14c1cfadb04"
+                ],
+                "sr0": [
+                    "1970-01-01-00-00-00-00"
+                ]
+            }
+        },
+        "devices": {
+            "sda": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [
+                        "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ"
+                    ],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Arch from Scratc",
+                "partitions": {
+                    "sda1": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part1"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": []
+                        },
+                        "sectors": "4096",
+                        "sectorsize": 512,
+                        "size": "2.00 MB",
+                        "start": "2048",
+                        "uuid": null
+                    },
+                    "sda2": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part2"
+                            ],
+                            "labels": [
+                                "EFISYS"
+                            ],
+                            "masters": [],
+                            "uuids": [
+                                "8ACC-236E"
+                            ]
+                        },
+                        "sectors": "2097152",
+                        "sectorsize": 512,
+                        "size": "1.00 GB",
+                        "start": "6144",
+                        "uuid": "8ACC-236E"
+                    },
+                    "sda3": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part3"
+                            ],
+                            "labels": [
+                                "SWAP_ARCH"
+                            ],
+                            "masters": [],
+                            "uuids": [
+                                "9a1e76d8-6c56-4fa4-b65c-3db044184b91"
+                            ]
+                        },
+                        "sectors": "524288",
+                        "sectorsize": 512,
+                        "size": "256.00 MB",
+                        "start": "2103296",
+                        "uuid": "9a1e76d8-6c56-4fa4-b65c-3db044184b91"
+                    },
+                    "sda4": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part4"
+                            ],
+                            "labels": [
+                                "ROOT_ARCH"
+                            ],
+                            "masters": [],
+                            "uuids": [
+                                "f1d649ae-2ca6-4fe9-813d-436568de4e8c"
+                            ]
+                        },
+                        "sectors": "15360000",
+                        "sectorsize": 512,
+                        "size": "7.32 GB",
+                        "start": "2627584",
+                        "uuid": "f1d649ae-2ca6-4fe9-813d-436568de4e8c"
+                    },
+                    "sda5": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-Arch_from_Scratch-0_SSD_F0YPC9RX5ZZMD59E0REQ-part5"
+                            ],
+                            "labels": [
+                                "HOME_ARCH"
+                            ],
+                            "masters": [],
+                            "uuids": [
+                                "7d9ba8f0-5ec7-4105-a540-a14c1cfadb04"
+                            ]
+                        },
+                        "sectors": "116230111",
+                        "sectorsize": 512,
+                        "size": "55.42 GB",
+                        "start": "17987584",
+                        "uuid": "7d9ba8f0-5ec7-4105-a540-a14c1cfadb04"
+                    }
+                },
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "mq-deadline",
+                "sectors": "134217728",
+                "sectorsize": "512",
+                "size": "64.00 GB",
+                "support_discard": "4096",
+                "vendor": "ATA",
+                "virtual": 1
+            },
+            "sr0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [
+                        "ata-Virtual_DVD-ROM__1__-_31415B265"
+                    ],
+                    "labels": [
+                        "ISOIMAGE"
+                    ],
+                    "masters": [],
+                    "uuids": [
+                        "1970-01-01-00-00-00-00"
+                    ]
+                },
+                "model": "Virtual DVD-ROM",
+                "partitions": {},
+                "removable": "1",
+                "rotational": "1",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "mq-deadline",
+                "sectors": "829772",
+                "sectorsize": "2048",
+                "size": "405.16 MB",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            }
+        },
+        "distribution": "Archlinux",
+        "distribution_file_path": "/etc/arch-release",
+        "distribution_file_variety": "Archlinux",
+        "distribution_major_version": "NA",
+        "distribution_release": "NA",
+        "distribution_version": "NA",
+        "dns": {
+            "domain": "localdomain",
+            "nameservers": [
+                "10.211.55.1"
+            ]
+        },
+        "domain": "",
+        "effective_group_id": 0,
+        "effective_user_id": 0,
+        "enp0s5": {
+            "active": true,
+            "device": "enp0s5",
+            "ipv4": {
+                "address": "10.211.55.11",
+                "broadcast": "10.211.55.255",
+                "netmask": "255.255.255.0",
+                "network": "10.211.55.0"
+            },
+            "ipv6": [
+                {
+                    "address": "fdb2:2c26:f4e4:0:21c:42ff:fee1:de30",
+                    "prefix": "64",
+                    "scope": "global"
+                },
+                {
+                    "address": "fe80::21c:42ff:fee1:de30",
+                    "prefix": "64",
+                    "scope": "link"
+                }
+            ],
+            "macaddress": "00:1c:42:e1:de:30",
+            "module": "virtio_net",
+            "mtu": 1500,
+            "pciid": "virtio0",
+            "promisc": false,
+            "speed": -1,
+            "type": "ether"
+        },
+        "env": {
+            "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/0/bus",
+            "HOME": "/root",
+            "INVOCATION_ID": "fcb306481e0045a1909da3b96ead6cb0",
+            "LANG": "C.UTF-8",
+            "LC_COLLATE": "C",
+            "LOGNAME": "root",
+            "MAIL": "/var/spool/mail/root",
+            "MOTD_SHOWN": "pam",
+            "OLDPWD": "/home/scripts/ansible-workstation/tasks",
+            "PATH": "/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl",
+            "PWD": "/home/scripts/ansible-workstation",
+            "SHELL": "/bin/bash",
+            "SHLVL": "2",
+            "SYSTEMD_EXEC_PID": "378",
+            "TERM": "linux",
+            "USER": "root",
+            "XDG_RUNTIME_DIR": "/run/user/0",
+            "XDG_SEAT": "seat0",
+            "XDG_SESSION_CLASS": "user",
+            "XDG_SESSION_ID": "1",
+            "XDG_SESSION_TYPE": "tty",
+            "XDG_VTNR": "1",
+            "_": "/usr/bin/python3"
+        },
+        "fibre_channel_wwn": [],
+        "fips": false,
+        "form_factor": "Unknown",
+        "fqdn": "Arch",
+        "gather_subset": [
+            "all"
+        ],
+        "hostname": "Arch",
+        "hostnqn": "",
+        "interfaces": [
+            "lo",
+            "enp0s5"
+        ],
+        "is_chroot": false,
+        "iscsi_iqn": "",
+        "kernel": "5.17.1-1-aarch64-ARCH",
+        "kernel_version": "#1 SMP Mon Mar 28 23:54:20 UTC 2022",
+        "lo": {
+            "active": true,
+            "device": "lo",
+            "ipv4": {
+                "address": "127.0.0.1",
+                "broadcast": "",
+                "netmask": "255.0.0.0",
+                "network": "127.0.0.0"
+            },
+            "ipv6": [
+                {
+                    "address": "::1",
+                    "prefix": "128",
+                    "scope": "host"
+                }
+            ],
+            "mtu": 65536,
+            "promisc": false,
+            "type": "loopback"
+        },
+        "lsb": {},
+        "lvm": {
+            "lvs": {},
+            "pvs": {},
+            "vgs": {}
+        },
+        "machine": "aarch64",
+        "machine_id": "4b48e3d4933b42f3a269e1b5f1445227",
+        "memfree_mb": 6475,
+        "memory_mb": {
+            "nocache": {
+                "free": 7725,
+                "used": 206
+            },
+            "real": {
+                "free": 6475,
+                "total": 7931,
+                "used": 1456
+            },
+            "swap": {
+                "cached": 0,
+                "free": 255,
+                "total": 255,
+                "used": 0
+            }
+        },
+        "memtotal_mb": 7931,
+        "module_setup": true,
+        "mounts": [
+            {
+                "block_available": 208607,
+                "block_size": 4096,
+                "block_total": 1865016,
+                "block_used": 1656409,
+                "device": "/dev/sda4",
+                "fstype": "ext4",
+                "inode_available": 245102,
+                "inode_total": 480496,
+                "inode_used": 235394,
+                "mount": "/",
+                "options": "rw,noatime",
+                "size_available": 854454272,
+                "size_total": 7639105536,
+                "uuid": "f1d649ae-2ca6-4fe9-813d-436568de4e8c"
+            },
+            {
+                "block_available": 13490894,
+                "block_size": 4096,
+                "block_total": 14221595,
+                "block_used": 730701,
+                "device": "/dev/sda5",
+                "fstype": "ext4",
+                "inode_available": 3637128,
+                "inode_total": 3637248,
+                "inode_used": 120,
+                "mount": "/home",
+                "options": "rw,relatime",
+                "size_available": 55258701824,
+                "size_total": 58251653120,
+                "uuid": "7d9ba8f0-5ec7-4105-a540-a14c1cfadb04"
+            }
+        ],
+        "nodename": "Arch",
+        "os_family": "Archlinux",
+        "pkg_mgr": "pacman",
+        "proc_cmdline": {
+            "BOOT_IMAGE": "/Image.gz",
+            "root": "PARTUUID=8fb447e6-effc-4028-9efb-240a0eb84fb2",
+            "rootflags": "rw,noatime",
+            "rootfstype": "ext4",
+            "rw": true
+        },
+        "processor": [
+            "0",
+            "1"
+        ],
+        "processor_cores": 1,
+        "processor_count": 2,
+        "processor_nproc": 2,
+        "processor_threads_per_core": 1,
+        "processor_vcpus": 2,
+        "product_name": "Parallels ARM Virtual Machine",
+        "product_serial": "Parallels-E1 83 7F 7C 67 27 48 AA BC 00 02 63 FB E7 BF F6",
+        "product_uuid": "e1837f7c-6727-48aa-bc00-0263fbe7bff6",
+        "product_version": "0.1",
+        "python": {
+            "executable": "/usr/bin/python3",
+            "has_sslcontext": true,
+            "type": "cpython",
+            "version": {
+                "major": 3,
+                "micro": 4,
+                "minor": 10,
+                "releaselevel": "final",
+                "serial": 0
+            },
+            "version_info": [
+                3,
+                10,
+                4,
+                "final",
+                0
+            ]
+        },
+        "python_version": "3.10.4",
+        "real_group_id": 0,
+        "real_user_id": 0,
+        "selinux": {
+            "status": "Missing selinux Python library"
+        },
+        "selinux_python_present": false,
+        "service_mgr": "systemd",
+        "swapfree_mb": 255,
+        "swaptotal_mb": 255,
+        "system": "Linux",
+        "system_capabilities": [],
+        "system_capabilities_enforced": "False",
+        "system_vendor": "Parallels International GmbH.",
+        "uptime_seconds": 108584,
+        "user_dir": "/root",
+        "user_gecos": "",
+        "user_gid": 0,
+        "user_id": "root",
+        "user_shell": "/bin/bash",
+        "user_uid": 0,
+        "userspace_bits": "64",
+        "virtualization_role": "NA",
+        "virtualization_tech_guest": [],
+        "virtualization_tech_host": [],
+        "virtualization_type": "NA"
+    }
+}
+
+TASK [Set package variables] ***************************************************
+ok: [localhost]
+
+TASK [Make shure we have the 'wheel' group] ************************************
+ok: [localhost]
+
+TASK [Allow 'wheel' group to have passwordless sudo] ***************************
+ok: [localhost]
+
+TASK [Create a login user] *****************************************************
+ok: [localhost]
+
+TASK [include_tasks] ***********************************************************
+included: /home/scripts/ansible-workstation/tasks/xorgandkde.yml for localhost
+
+TASK [Remove Conflicts] ********************************************************
+changed: [localhost]
+
+TASK [Install xorg] ************************************************************
+changed: [localhost]
+
+TASK [Install plasma] **********************************************************
+ok: [localhost]
+
+TASK [Install plasma-wayland-session] ******************************************
+ok: [localhost]
+
+TASK [Install KDE applications] ************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["/usr/bin/pacman", "--noconfirm", "--noprogressbar", "--needed", "--sync", "klines", "kdevelop", "dolphin", "filelight", "ktuberling", "konqueror", "kio-gdrive", "kfind", "kblocks", "kleopatra", "korganizer", "katomic", "kdialog", "grantlee-editor", "kapman", "kcachegrind", "kturtle", "kwalletmanager", "audiocd-kio", "kdenetwork-filesharing", "konquest", "partitionmanager", "telepathy-kde-approver", "zeroconf-ioslave", "parley", "kblackbox", "juk", "kmines", "klettres", "kimagemapeditor", "kget", "krfb", "ksirk", "kontact", "kirigami-gallery", "kde-dev-utils", "kde-dev-scripts", "lskat", "kteatime", "spectacle", "kamoso", "telepathy-kde-send-file", "kcharselect", "kfloppy", "akonadi-calendar-tools", "gwenview", "telepathy-kde-call-ui", "granatier", "kdegraphics-thumbnailers", "kdesdk-kioslaves", "kspaceduel", "konsole", "klickety", "poxml", "khelpcenter", "knights", "kdepim-addons", "skanlite", "marble", "ksystemlog", "step", "telepathy-kde-contact-list", "print-manager", "itinerary", "kbruch", "falkon", "artikulate", "pim-data-exporter", "telepathy-kde-contact-runner", "telepathy-kde-accounts-kcm", "kcolorchooser", "kalarm", "kajongg", "kontrast", "kpat", "lokalize", "kdiamond", "palapeli", "sweeper", "pim-sieve-editor", "kdf", "dragon", "kwordquiz", "kigo", "kalgebra", "knotes", "konversation", "kruler", "minuet", "telepathy-kde-filetransfer-handler", "umbrello", "kiriki", "khangman", "kgpg", "kdebugsettings", "markdownpart", "kreversi", "kopete", "akonadiconsole", "kmag", "akonadi-import-wizard", "kdevelop-php", "kgoldrunner", "kwrite", "ark", "telepathy-kde-desktop-applets", "telepathy-kde-text-ui", "kollision", "kolf", "kate", "zanshin", "elisa", "krdc", "akregator", "k3b", "kmplot", "skanpage", "keditbookmarks", "blinken", "knetwalk", "ktouch", "kshisen", "kmix", "ksnakeduel", "dolphin-plugins", "kdenlive", "kwave", "cantor", "kamera", "ffmpegthumbs", "kalzium", "cervisia", "bovo", "kdesdk-thumbnailers", "kfourinline", "knavalbattle", "kmouth", "kcron", "okular", "kiten", "rocs", "ktimer", "ktorrent", "ksquares", "kompare", "kmousetool", "kmail", "bomber", "kcalc", "kbreakout", "kubrick", "telepathy-kde-auth-handler", "kalendar", "kaddressbook", "kapptemplate", "kmail-account-wizard", "kanagram", "telepathy-kde-integration-module", "mbox-importer", "killbots", "kbounce", "ksudoku", "kig", "kbackup", "kolourpaint", "svgpart", "kgeography", "kmahjongg", "telepathy-kde-common-internals", "kdeconnect", "kjumpingcube", "picmi", "yakuake"], "msg": "Failed to install package(s)", "stderr": "warning: dependency cycle detected:\nwarning: python-incremental will be installed before its python-twisted dependency\nerror: Partition / too full: 902413 blocks needed, 208513 blocks free\nerror: not enough free disk space\nerror: failed to commit transaction (not enough free disk space)\n", "stderr_lines": ["warning: dependency cycle detected:", "warning: python-incremental will be installed before its python-twisted dependency", "error: Partition / too full: 902413 blocks needed, 208513 blocks free", "error: not enough free disk space", "error: failed to commit transaction (not enough free disk space)"], "stdout": "resolving dependencies...\n:: There are 2 providers available for qt5-python-bindings:\n:: Repository extra\n   1) pyside2  2) python-pyqt5\n\nEnter a number (default=1): \n:: There are 2 providers available for cron:\n:: Repository core\n   1) cronie\n:: Repository community\n   2) fcron\n\nEnter a number (default=1): \nlooking for conflicting packages...\n\nPackages (428) a52dec-0.7.4-11  aalib-1.4rc5-14  abseil-cpp-20211102.0-2  akonadi-22.04.0-1  akonadi-calendar-22.04.0-1  akonadi-contacts-22.04.0-1  akonadi-mime-22.04.0-1  akonadi-notes-22.04.0-1  akonadi-search-22.04.0-1  analitza-22.04.0-1  aom-3.3.0-1  audiofile-0.3.6-6  avogadro-crystals-1.0.1-1  avogadro-molecules-1.0.0-1  avogadrolibs-1.95.1-7  avogadrolibs-qt5-1.95.1-7  baloo-widgets-22.04.0-1  black-hole-solver-1.12.0-1  calendarsupport-22.04.0-1  cfitsio-1:4.1.0-1  chromaprint-1.5.1-3  clang-13.0.1-2  compiler-rt-13.0.1-1  coordgen-3.0.0-1  cronie-1.6.1-1  dbus-glib-0.112-2  djvulibre-3.5.28-3  dnssec-anchors-20190629-3  docbook-xml-4.5-9  docbook-xsl-1.79.2-7  eventviews-22.04.0-1  faac-1.30-3  faad2-2.10.0-1  farstream-0.2.9-3  ffmpeg4.4-4.4.1-4  fftw-3.3.10-2  fluidsynth-2.2.7-1  fmt-8.1.1-2  freecell-solver-6.6.0-1  frei0r-plugins-1.7.0-2  gavl-1.4.0-6  gcc-11.2.0-3  gd-2.3.3-3  geoclue-2.6.0-2  geocode-glib-3.26.2+r9+g6047da3-2  ghostscript-9.56.1-1  glew-2.2.0-2  glslang-11.9.0-1  gnugo-3.8-7  grantlee-5.2.0-3  grantleetheme-22.04.0-1  gsl-2.7.1-1  gssdp-1.4.0.1-1  gst-plugins-bad-1.20.1-1  gst-plugins-bad-libs-1.20.1-1  gst-plugins-good-1.20.1-1  gupnp-1:1.4.3-1  gupnp-igd-1.2.0-2  hdf5-1.12.1-1  hunspell-1.7.0-3  hwloc-2.7.1-1  hyphen-2.8.8-3  id3lib-3.8.3-18  ijs-0.35-3  imagemagick-7.1.0.31-1  imath-3.1.5-1  imlib2-1.9.0-3  incidenceeditor-22.04.0-1  jasper-2.0.33-2  jbig2dec-0.19-1  jemalloc-1:5.2.1-6  json-glib-1.6.6-2  kaccounts-providers-22.04.0-1  kcachegrind-common-22.04.0-1  kcalendarcore-5.93.0-1  kcalutils-22.04.0-1  kcolorpicker-0.1.6-1  kcontacts-1:5.93.0-1  kdav-1:5.93.0-1  kdeedu-data-22.04.0-1  kdegraphics-mobipocket-22.04.0-1  kdepim-runtime-22.04.0-1  kdiagram-2.8.0-1  kdoctools-5.93.0-1  khealthcertificate-21.12-1  khtml-5.93.0-1  kidentitymanagement-22.04.0-1  kimageannotator-0.5.3-2  kimap-22.04.0-1  kinit-5.93.0-1  kitinerary-22.04.0-1  kjs-5.93.0-1  kldap-22.04.0-1  kmailtransport-22.04.0-1  kmbox-22.04.0-1  kmime-22.04.0-1  kontactinterface-22.04.0-1  kopeninghours-22.04.0-1  kosmindoormap-22.04.0-2  kpeoplevcard-0.1-1  kpimtextedit-22.04.0-1  kpkpass-22.04.0-1  kplotting-5.93.0-1  kpmcore-22.04.0-1  kpublictransport-22.04.0-1  kqtquickcharts-22.04.0-1  kross-5.93.0-1  ksmtp-22.04.0-1  ktnef-22.04.0-1  ldns-1.8.1-1  libaec-1.0.6-1  libakonadi-22.04.0-1  libavtp-0.2.0-1  libbs2b-3.1.0-7  libburn-1.5.4-1  libcaca-0.99.beta20-1  libdc1394-2.2.6-2  libdca-0.0.7-1  libde265-1.0.8-2  libdv-1.0.0-9  libdvbpsi-1:1.3.3-2  libdvdnav-6.1.1-1  libdvdread-6.1.2-1  libebml-1.4.2-2  libebur128-1.2.6-1  libexif-0.6.24-1  libfakekey-0.3-2  libgme-0.6.3-1  libgphoto2-2.5.29-1  libgravatar-22.04.0-1  libheif-1.12.0-3  libidn-1.38-1  libieee1284-0.2.11-13  libinstpatch-1.1.6-1  libkate-0.4.1-8  libkcddb-22.04.0-1  libkcompactdisc-22.04.0-1  libkdcraw-22.04.0-1  libkdegames-22.04.0-1  libkdepim-22.04.0-1  libkeduvocdocument-22.04.0-1  libkexiv2-22.04.0-1  libkgapi-22.04.0-1  libkleo-22.04.0-1  libkmahjongg-22.04.0-1  libkolabxml-1.1.6-17  libkomparediff2-22.04.0-1  libksane-22.04.0-1  libksieve-22.04.0-1  libktorrent-22.04.0-1  liblqr-0.4.2-3  liblrdf-0.6.1-4  libltc-1.3.1-3  libmad-0.15.1b-9  libmatroska-1.6.3-2  libmicrodns-0.2.0-1  libmpc-1.2.1-2  libmpcdec-1:0.1+r475-3  libmpeg2-0.5.1-7  libmsym-0.2.3-7  libmusicbrainz5-5.1.0-4  libnice-0.1.18-2  libopenmpt-0.6.3-1  libotr-4.1.1-3  libpaper-1.1.28-1  libphonenumber-1:8.12.47-1  libplacebo-4.192.1-2  libraqm-0.9.0-1  libraw-0.20.2-1  libshout-1:2.4.5-1  libsignon-glib-2.1-5  libsoup3-3.0.6-1  libspectre-0.2.10-1  libsrtp-1:2.4.2-1  libtar-1.2.20-6  libupnp-1.14.12-3  liburing-2.1-1  libvncserver-0.9.13-1  lua52-5.2.4-5  maeparser-1.2.4-5  mailcommon-22.04.0-1  mailimporter-22.04.0-1  marble-common-22.04.0-2  mariadb-10.7.3-1  mariadb-clients-10.7.3-1  mariadb-libs-10.7.3-1  messagelib-22.04.0-1  mjpegtools-2.2.1-1  mlt-7.6.0-1  molequeue-0.9.0-2  mpg123-1.29.3-1.1  neon-0.32.2-1  net-snmp-5.9.1-3  openbabel-3.1.1-3  openexr-3.1.5-1  openmpi-4.1.2-1  openssh-9.0p1-1  perl-parse-yapp-1.21-4  pimcommon-22.04.0-1  poppler-glib-22.03.0-1  portaudio-1:19.7.0-1  protobuf-3.20.1-1  pugixml-1.12.1-1  pulseaudio-qt-1.3-1  pyside2-5.15.3-3  python-attrs-21.4.0-1  python-automat-20.2.0-9  python-click-8.1.2-1  python-constantly-15.1.0-11  python-hyperlink-21.0.0-4  python-idna-3.3-4  python-incremental-21.3.0-5  python-qtpy-2.0.1-1  python-shiboken2-5.15.3-3  python-twisted-21.7.0-4  python-typing_extensions-4.2.0-1  python-zope-interface-5.4.0-4  qgpgme-1.17.1-1  qhull-2020.2-4  qt-gstreamer-1.2.0-4  qt5-networkauth-5.15.3+kde+r0-1  qt5-script-5.15.9-1  qt5-webkit-5.212.0alpha4-13  qt5-xmlpatterns-5.15.3+kde+r0-1  qtkeychain-qt5-0.13.2-1  raptor-2.0.15-19  rtmpdump-1:2.4.r99.f1b83c1-2  run-parts-5.5-1  samba-4.16.0-5.1  sane-1.1.1-1  shaderc-2022.1-3  soundtouch-2.3.1-2  spandsp-0.0.6-3  spglib-1.16.3-1  spirv-tools-2022.1-1  tbb-2021.5.0-1  telepathy-accounts-signon-2.1-2  telepathy-farstream-0.6.2-7  telepathy-glib-0.24.2-2  telepathy-logger-0.8.2-5  telepathy-logger-qt-17.09.0-1  telepathy-mission-control-5.16.6-1  telepathy-qt-0.9.8-2  twolame-0.4.0-2  vlc-3.0.17.4-2  vtk-9.1.0-14  wavpack-5.4.0-1  wayland-protocols-1.25-1  wildmidi-0.4.4-1  woff2-1.0.2-3  xapian-core-1:1.4.19-2  xdg-desktop-portal-1.14.3-1  xerces-c-3.2.3-6  zbar-0.23.1-9  zvbi-0.2.35-4  akonadi-calendar-tools-22.04.0-1  akonadi-import-wizard-22.04.0-1  akonadiconsole-22.04.0-1  akregator-22.04.0-1  ark-22.04.0-1  artikulate-22.04.0-1  audiocd-kio-22.04.0-1  blinken-22.04.0-1  bomber-22.04.0-1  bovo-22.04.0-1  cantor-22.04.0-1  cervisia-22.04.0-1  dolphin-22.04.0-1  dolphin-plugins-22.04.0-1  dragon-22.04.0-1  elisa-22.04.0-1  falkon-22.04.0-1  ffmpegthumbs-22.04.0-1  filelight-22.04.0-1  granatier-22.04.0-1  grantlee-editor-22.04.0-1  gwenview-22.04.0-1  itinerary-22.04.0-1  juk-22.04.0-1  k3b-1:22.04.0-1  kaddressbook-22.04.0-1  kajongg-22.04.0-2  kalarm-22.04.0-1  kalendar-22.04.0-1  kalgebra-22.04.0-1  kalzium-22.04.0-1  kamera-22.04.0-1  kamoso-22.04.0-1  kanagram-22.04.0-1  kapman-22.04.0-1  kapptemplate-22.04.0-1  kate-22.04.0-1  katomic-22.04.0-1  kbackup-22.04.0-1  kblackbox-22.04.0-1  kblocks-22.04.0-1  kbounce-22.04.0-1  kbreakout-22.04.0-1  kbruch-22.04.0-1  kcachegrind-22.04.0-1  kcalc-22.04.0-1  kcharselect-22.04.0-1  kcolorchooser-22.04.0-1  kcron-22.04.0-1  kde-dev-scripts-22.04.0-1  kde-dev-utils-22.04.0-1  kdebugsettings-22.04.0-1  kdeconnect-22.04.0-2  kdegraphics-thumbnailers-22.04.0-1  kdenetwork-filesharing-22.04.0-1  kdenlive-22.04.0-1  kdepim-addons-22.04.0-1  kdesdk-kioslaves-22.04.0-1  kdesdk-thumbnailers-22.04.0-1  kdevelop-22.04.0-1  kdevelop-php-22.04.0-1  kdf-22.04.0-1  kdialog-22.04.0-1  kdiamond-22.04.0-1  keditbookmarks-22.04.0-1  kfind-22.04.0-1  kfloppy-22.04.0-1  kfourinline-22.04.0-1  kgeography-22.04.0-1  kget-22.04.0-1  kgoldrunner-22.04.0-1  kgpg-22.04.0-1  khangman-22.04.0-1  khelpcenter-22.04.0-1  kig-22.04.0-1  kigo-22.04.0-1  killbots-22.04.0-1  kimagemapeditor-22.04.0-1  kio-gdrive-22.04.0-1  kirigami-gallery-22.04.0-1  kiriki-22.04.0-1  kiten-22.04.0-1  kjumpingcube-22.04.0-1  kleopatra-22.04.0-1  klettres-22.04.0-1  klickety-22.04.0-1  klines-22.04.0-1  kmag-22.04.0-1  kmahjongg-22.04.0-1  kmail-22.04.0-1  kmail-account-wizard-22.04.0-1  kmines-22.04.0-1  kmix-22.04.0-1  kmousetool-22.04.0-1  kmouth-22.04.0-1  kmplot-22.04.0-1  knavalbattle-22.04.0-1  knetwalk-22.04.0-1  knights-22.04.0-1  knotes-22.04.0-1  kolf-22.04.0-1  kollision-22.04.0-1  kolourpaint-22.04.0-1  kompare-22.04.0-1  konqueror-22.04.0-1  konquest-22.04.0-1  konsole-22.04.0-1  kontact-22.04.0-1  kontrast-22.04.0-1  konversation-22.04.0-1  kopete-22.04.0-1  korganizer-22.04.0-1  kpat-22.04.0-1  krdc-22.04.0-1  kreversi-22.04.0-1  krfb-22.04.0-1  kruler-22.04.0-1  kshisen-22.04.0-1  ksirk-22.04.0-1  ksnakeduel-22.04.0-1  kspaceduel-22.04.0-1  ksquares-22.04.0-1  ksudoku-22.04.0-1  ksystemlog-22.04.0-1  kteatime-22.04.0-1  ktimer-22.04.0-1  ktorrent-22.04.0-1  ktouch-22.04.0-1  ktuberling-22.04.0-1  kturtle-22.04.0-1  kubrick-22.04.0-1  kwalletmanager-22.04.0-1  kwave-22.04.0-1  kwordquiz-22.04.0-1  kwrite-22.04.0-1  lokalize-22.04.0-1  lskat-22.04.0-1  marble-22.04.0-2  markdownpart-22.04.0-1  mbox-importer-22.04.0-1  minuet-22.04.0-1  okular-22.04.0-1  palapeli-22.04.0-1  parley-22.04.0-1  partitionmanager-22.04.0-1  picmi-22.04.0-1  pim-data-exporter-22.04.0-1  pim-sieve-editor-22.04.0-1  poxml-22.04.0-1  print-manager-22.04.0-1  rocs-22.04.0-1  skanlite-22.04.0-1  skanpage-22.04.0-1  spectacle-22.04.0-1  step-22.04.0-1  svgpart-22.04.0-1  sweeper-22.04.0-1  telepathy-kde-accounts-kcm-22.04.0-1  telepathy-kde-approver-22.04.0-1  telepathy-kde-auth-handler-22.04.0-1  telepathy-kde-call-ui-22.04.0-1  telepathy-kde-common-internals-22.04.0-1  telepathy-kde-contact-list-22.04.0-1  telepathy-kde-contact-runner-22.04.0-1  telepathy-kde-desktop-applets-22.04.0-1  telepathy-kde-filetransfer-handler-22.04.0-1  telepathy-kde-integration-module-22.04.0-1  telepathy-kde-send-file-22.04.0-1  telepathy-kde-text-ui-22.04.0-1  umbrello-22.04.0-1  yakuake-22.04.0-1  zanshin-22.04.0-1  zeroconf-ioslave-22.04.0-1\n\nTotal Installed Size:  3287.78 MiB\n\n:: Proceed with installation? [Y/n] \nchecking keyring...\nchecking package integrity...\nloading package files...\nchecking for file conflicts...\nchecking available disk space...\nErrors occurred, no packages were upgraded.\n", "stdout_lines": ["resolving dependencies...", ":: There are 2 providers available for qt5-python-bindings:", ":: Repository extra", "   1) pyside2  2) python-pyqt5", "", "Enter a number (default=1): ", ":: There are 2 providers available for cron:", ":: Repository core", "   1) cronie", ":: Repository community", "   2) fcron", "", "Enter a number (default=1): ", "looking for conflicting packages...", "", "Packages (428) a52dec-0.7.4-11  aalib-1.4rc5-14  abseil-cpp-20211102.0-2  akonadi-22.04.0-1  akonadi-calendar-22.04.0-1  akonadi-contacts-22.04.0-1  akonadi-mime-22.04.0-1  akonadi-notes-22.04.0-1  akonadi-search-22.04.0-1  analitza-22.04.0-1  aom-3.3.0-1  audiofile-0.3.6-6  avogadro-crystals-1.0.1-1  avogadro-molecules-1.0.0-1  avogadrolibs-1.95.1-7  avogadrolibs-qt5-1.95.1-7  baloo-widgets-22.04.0-1  black-hole-solver-1.12.0-1  calendarsupport-22.04.0-1  cfitsio-1:4.1.0-1  chromaprint-1.5.1-3  clang-13.0.1-2  compiler-rt-13.0.1-1  coordgen-3.0.0-1  cronie-1.6.1-1  dbus-glib-0.112-2  djvulibre-3.5.28-3  dnssec-anchors-20190629-3  docbook-xml-4.5-9  docbook-xsl-1.79.2-7  eventviews-22.04.0-1  faac-1.30-3  faad2-2.10.0-1  farstream-0.2.9-3  ffmpeg4.4-4.4.1-4  fftw-3.3.10-2  fluidsynth-2.2.7-1  fmt-8.1.1-2  freecell-solver-6.6.0-1  frei0r-plugins-1.7.0-2  gavl-1.4.0-6  gcc-11.2.0-3  gd-2.3.3-3  geoclue-2.6.0-2  geocode-glib-3.26.2+r9+g6047da3-2  ghostscript-9.56.1-1  glew-2.2.0-2  glslang-11.9.0-1  gnugo-3.8-7  grantlee-5.2.0-3  grantleetheme-22.04.0-1  gsl-2.7.1-1  gssdp-1.4.0.1-1  gst-plugins-bad-1.20.1-1  gst-plugins-bad-libs-1.20.1-1  gst-plugins-good-1.20.1-1  gupnp-1:1.4.3-1  gupnp-igd-1.2.0-2  hdf5-1.12.1-1  hunspell-1.7.0-3  hwloc-2.7.1-1  hyphen-2.8.8-3  id3lib-3.8.3-18  ijs-0.35-3  imagemagick-7.1.0.31-1  imath-3.1.5-1  imlib2-1.9.0-3  incidenceeditor-22.04.0-1  jasper-2.0.33-2  jbig2dec-0.19-1  jemalloc-1:5.2.1-6  json-glib-1.6.6-2  kaccounts-providers-22.04.0-1  kcachegrind-common-22.04.0-1  kcalendarcore-5.93.0-1  kcalutils-22.04.0-1  kcolorpicker-0.1.6-1  kcontacts-1:5.93.0-1  kdav-1:5.93.0-1  kdeedu-data-22.04.0-1  kdegraphics-mobipocket-22.04.0-1  kdepim-runtime-22.04.0-1  kdiagram-2.8.0-1  kdoctools-5.93.0-1  khealthcertificate-21.12-1  khtml-5.93.0-1  kidentitymanagement-22.04.0-1  kimageannotator-0.5.3-2  kimap-22.04.0-1  kinit-5.93.0-1  kitinerary-22.04.0-1  kjs-5.93.0-1  kldap-22.04.0-1  kmailtransport-22.04.0-1  kmbox-22.04.0-1  kmime-22.04.0-1  kontactinterface-22.04.0-1  kopeninghours-22.04.0-1  kosmindoormap-22.04.0-2  kpeoplevcard-0.1-1  kpimtextedit-22.04.0-1  kpkpass-22.04.0-1  kplotting-5.93.0-1  kpmcore-22.04.0-1  kpublictransport-22.04.0-1  kqtquickcharts-22.04.0-1  kross-5.93.0-1  ksmtp-22.04.0-1  ktnef-22.04.0-1  ldns-1.8.1-1  libaec-1.0.6-1  libakonadi-22.04.0-1  libavtp-0.2.0-1  libbs2b-3.1.0-7  libburn-1.5.4-1  libcaca-0.99.beta20-1  libdc1394-2.2.6-2  libdca-0.0.7-1  libde265-1.0.8-2  libdv-1.0.0-9  libdvbpsi-1:1.3.3-2  libdvdnav-6.1.1-1  libdvdread-6.1.2-1  libebml-1.4.2-2  libebur128-1.2.6-1  libexif-0.6.24-1  libfakekey-0.3-2  libgme-0.6.3-1  libgphoto2-2.5.29-1  libgravatar-22.04.0-1  libheif-1.12.0-3  libidn-1.38-1  libieee1284-0.2.11-13  libinstpatch-1.1.6-1  libkate-0.4.1-8  libkcddb-22.04.0-1  libkcompactdisc-22.04.0-1  libkdcraw-22.04.0-1  libkdegames-22.04.0-1  libkdepim-22.04.0-1  libkeduvocdocument-22.04.0-1  libkexiv2-22.04.0-1  libkgapi-22.04.0-1  libkleo-22.04.0-1  libkmahjongg-22.04.0-1  libkolabxml-1.1.6-17  libkomparediff2-22.04.0-1  libksane-22.04.0-1  libksieve-22.04.0-1  libktorrent-22.04.0-1  liblqr-0.4.2-3  liblrdf-0.6.1-4  libltc-1.3.1-3  libmad-0.15.1b-9  libmatroska-1.6.3-2  libmicrodns-0.2.0-1  libmpc-1.2.1-2  libmpcdec-1:0.1+r475-3  libmpeg2-0.5.1-7  libmsym-0.2.3-7  libmusicbrainz5-5.1.0-4  libnice-0.1.18-2  libopenmpt-0.6.3-1  libotr-4.1.1-3  libpaper-1.1.28-1  libphonenumber-1:8.12.47-1  libplacebo-4.192.1-2  libraqm-0.9.0-1  libraw-0.20.2-1  libshout-1:2.4.5-1  libsignon-glib-2.1-5  libsoup3-3.0.6-1  libspectre-0.2.10-1  libsrtp-1:2.4.2-1  libtar-1.2.20-6  libupnp-1.14.12-3  liburing-2.1-1  libvncserver-0.9.13-1  lua52-5.2.4-5  maeparser-1.2.4-5  mailcommon-22.04.0-1  mailimporter-22.04.0-1  marble-common-22.04.0-2  mariadb-10.7.3-1  mariadb-clients-10.7.3-1  mariadb-libs-10.7.3-1  messagelib-22.04.0-1  mjpegtools-2.2.1-1  mlt-7.6.0-1  molequeue-0.9.0-2  mpg123-1.29.3-1.1  neon-0.32.2-1  net-snmp-5.9.1-3  openbabel-3.1.1-3  openexr-3.1.5-1  openmpi-4.1.2-1  openssh-9.0p1-1  perl-parse-yapp-1.21-4  pimcommon-22.04.0-1  poppler-glib-22.03.0-1  portaudio-1:19.7.0-1  protobuf-3.20.1-1  pugixml-1.12.1-1  pulseaudio-qt-1.3-1  pyside2-5.15.3-3  python-attrs-21.4.0-1  python-automat-20.2.0-9  python-click-8.1.2-1  python-constantly-15.1.0-11  python-hyperlink-21.0.0-4  python-idna-3.3-4  python-incremental-21.3.0-5  python-qtpy-2.0.1-1  python-shiboken2-5.15.3-3  python-twisted-21.7.0-4  python-typing_extensions-4.2.0-1  python-zope-interface-5.4.0-4  qgpgme-1.17.1-1  qhull-2020.2-4  qt-gstreamer-1.2.0-4  qt5-networkauth-5.15.3+kde+r0-1  qt5-script-5.15.9-1  qt5-webkit-5.212.0alpha4-13  qt5-xmlpatterns-5.15.3+kde+r0-1  qtkeychain-qt5-0.13.2-1  raptor-2.0.15-19  rtmpdump-1:2.4.r99.f1b83c1-2  run-parts-5.5-1  samba-4.16.0-5.1  sane-1.1.1-1  shaderc-2022.1-3  soundtouch-2.3.1-2  spandsp-0.0.6-3  spglib-1.16.3-1  spirv-tools-2022.1-1  tbb-2021.5.0-1  telepathy-accounts-signon-2.1-2  telepathy-farstream-0.6.2-7  telepathy-glib-0.24.2-2  telepathy-logger-0.8.2-5  telepathy-logger-qt-17.09.0-1  telepathy-mission-control-5.16.6-1  telepathy-qt-0.9.8-2  twolame-0.4.0-2  vlc-3.0.17.4-2  vtk-9.1.0-14  wavpack-5.4.0-1  wayland-protocols-1.25-1  wildmidi-0.4.4-1  woff2-1.0.2-3  xapian-core-1:1.4.19-2  xdg-desktop-portal-1.14.3-1  xerces-c-3.2.3-6  zbar-0.23.1-9  zvbi-0.2.35-4  akonadi-calendar-tools-22.04.0-1  akonadi-import-wizard-22.04.0-1  akonadiconsole-22.04.0-1  akregator-22.04.0-1  ark-22.04.0-1  artikulate-22.04.0-1  audiocd-kio-22.04.0-1  blinken-22.04.0-1  bomber-22.04.0-1  bovo-22.04.0-1  cantor-22.04.0-1  cervisia-22.04.0-1  dolphin-22.04.0-1  dolphin-plugins-22.04.0-1  dragon-22.04.0-1  elisa-22.04.0-1  falkon-22.04.0-1  ffmpegthumbs-22.04.0-1  filelight-22.04.0-1  granatier-22.04.0-1  grantlee-editor-22.04.0-1  gwenview-22.04.0-1  itinerary-22.04.0-1  juk-22.04.0-1  k3b-1:22.04.0-1  kaddressbook-22.04.0-1  kajongg-22.04.0-2  kalarm-22.04.0-1  kalendar-22.04.0-1  kalgebra-22.04.0-1  kalzium-22.04.0-1  kamera-22.04.0-1  kamoso-22.04.0-1  kanagram-22.04.0-1  kapman-22.04.0-1  kapptemplate-22.04.0-1  kate-22.04.0-1  katomic-22.04.0-1  kbackup-22.04.0-1  kblackbox-22.04.0-1  kblocks-22.04.0-1  kbounce-22.04.0-1  kbreakout-22.04.0-1  kbruch-22.04.0-1  kcachegrind-22.04.0-1  kcalc-22.04.0-1  kcharselect-22.04.0-1  kcolorchooser-22.04.0-1  kcron-22.04.0-1  kde-dev-scripts-22.04.0-1  kde-dev-utils-22.04.0-1  kdebugsettings-22.04.0-1  kdeconnect-22.04.0-2  kdegraphics-thumbnailers-22.04.0-1  kdenetwork-filesharing-22.04.0-1  kdenlive-22.04.0-1  kdepim-addons-22.04.0-1  kdesdk-kioslaves-22.04.0-1  kdesdk-thumbnailers-22.04.0-1  kdevelop-22.04.0-1  kdevelop-php-22.04.0-1  kdf-22.04.0-1  kdialog-22.04.0-1  kdiamond-22.04.0-1  keditbookmarks-22.04.0-1  kfind-22.04.0-1  kfloppy-22.04.0-1  kfourinline-22.04.0-1  kgeography-22.04.0-1  kget-22.04.0-1  kgoldrunner-22.04.0-1  kgpg-22.04.0-1  khangman-22.04.0-1  khelpcenter-22.04.0-1  kig-22.04.0-1  kigo-22.04.0-1  killbots-22.04.0-1  kimagemapeditor-22.04.0-1  kio-gdrive-22.04.0-1  kirigami-gallery-22.04.0-1  kiriki-22.04.0-1  kiten-22.04.0-1  kjumpingcube-22.04.0-1  kleopatra-22.04.0-1  klettres-22.04.0-1  klickety-22.04.0-1  klines-22.04.0-1  kmag-22.04.0-1  kmahjongg-22.04.0-1  kmail-22.04.0-1  kmail-account-wizard-22.04.0-1  kmines-22.04.0-1  kmix-22.04.0-1  kmousetool-22.04.0-1  kmouth-22.04.0-1  kmplot-22.04.0-1  knavalbattle-22.04.0-1  knetwalk-22.04.0-1  knights-22.04.0-1  knotes-22.04.0-1  kolf-22.04.0-1  kollision-22.04.0-1  kolourpaint-22.04.0-1  kompare-22.04.0-1  konqueror-22.04.0-1  konquest-22.04.0-1  konsole-22.04.0-1  kontact-22.04.0-1  kontrast-22.04.0-1  konversation-22.04.0-1  kopete-22.04.0-1  korganizer-22.04.0-1  kpat-22.04.0-1  krdc-22.04.0-1  kreversi-22.04.0-1  krfb-22.04.0-1  kruler-22.04.0-1  kshisen-22.04.0-1  ksirk-22.04.0-1  ksnakeduel-22.04.0-1  kspaceduel-22.04.0-1  ksquares-22.04.0-1  ksudoku-22.04.0-1  ksystemlog-22.04.0-1  kteatime-22.04.0-1  ktimer-22.04.0-1  ktorrent-22.04.0-1  ktouch-22.04.0-1  ktuberling-22.04.0-1  kturtle-22.04.0-1  kubrick-22.04.0-1  kwalletmanager-22.04.0-1  kwave-22.04.0-1  kwordquiz-22.04.0-1  kwrite-22.04.0-1  lokalize-22.04.0-1  lskat-22.04.0-1  marble-22.04.0-2  markdownpart-22.04.0-1  mbox-importer-22.04.0-1  minuet-22.04.0-1  okular-22.04.0-1  palapeli-22.04.0-1  parley-22.04.0-1  partitionmanager-22.04.0-1  picmi-22.04.0-1  pim-data-exporter-22.04.0-1  pim-sieve-editor-22.04.0-1  poxml-22.04.0-1  print-manager-22.04.0-1  rocs-22.04.0-1  skanlite-22.04.0-1  skanpage-22.04.0-1  spectacle-22.04.0-1  step-22.04.0-1  svgpart-22.04.0-1  sweeper-22.04.0-1  telepathy-kde-accounts-kcm-22.04.0-1  telepathy-kde-approver-22.04.0-1  telepathy-kde-auth-handler-22.04.0-1  telepathy-kde-call-ui-22.04.0-1  telepathy-kde-common-internals-22.04.0-1  telepathy-kde-contact-list-22.04.0-1  telepathy-kde-contact-runner-22.04.0-1  telepathy-kde-desktop-applets-22.04.0-1  telepathy-kde-filetransfer-handler-22.04.0-1  telepathy-kde-integration-module-22.04.0-1  telepathy-kde-send-file-22.04.0-1  telepathy-kde-text-ui-22.04.0-1  umbrello-22.04.0-1  yakuake-22.04.0-1  zanshin-22.04.0-1  zeroconf-ioslave-22.04.0-1", "", "Total Installed Size:  3287.78 MiB", "", ":: Proceed with installation? [Y/n] ", "checking keyring...", "checking package integrity...", "loading package files...", "checking for file conflicts...", "checking available disk space...", "Errors occurred, no packages were upgraded."]}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=11   changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

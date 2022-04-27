@@ -1,0 +1,45 @@
+---
+
+# XCOrg and KDE Plasma with Wayland
+
+  - name: Remove Conflicts
+    community.general.pacman:
+      name:
+        - xorg-mkfontscale
+      state: removed
+
+  - name: Install xorg
+    community.general.pacman:
+#    become: yes
+#    ignore_errors: yes
+      name:
+        - xf86-input-libinput
+        - xf86-video-fbdev
+        - xorg-server
+        - xorg-apps
+        - xorg-xrdb
+        - xorg-xsetroot
+        - xorg-xev
+      state: latest
+      
+  - name: Install plasma
+    community.general.pacman:
+#    become: yes
+#    ignore_errors: yes
+      name: plasma
+      state: present
+    
+  - name: Install plasma-wayland-session
+    community.general.pacman:
+#    ignore_errors: yes
+#    become: yes
+      name: plasma-wayland-session
+      state: present
+      
+  - name: Install KDE applications
+    community.general.pacman:
+#    become: yes
+#    ignore_errors: yes
+      name: kde-applications
+      state: present
+    
